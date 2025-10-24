@@ -1,0 +1,196 @@
+
+
+<section id="hero" class="section" style="padding-top:160px;padding-bottom:40px;position:relative;overflow:hidden;">
+  <div class="container">
+    <div class="hero-box" style="border-left:1px solid var(--border);border-right:1px solid var(--border);padding:64px;background:rgba(0,0,0,0.3);display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;position:relative;z-index:10;">
+      <div>
+        <p class="eyebrow" style="margin-bottom:20px;">Agent Testing SDK</p>
+        <h1 style="margin-bottom:24px;">Unit tests for AI Agents</h1>
+        <p class="lead" style="margin-bottom:12px;">
+          <span id="typed-text"></span><span id="cursor" style="animation:blink 1s infinite;">|</span>
+        </p>
+        <p style="color:var(--muted);margin:0;font-size:17px;">Turn production agent interactions into reliable test cases with zero-friction instrumentation</p>
+      </div>
+      <div>
+        <pre class="hero-code" style="margin:0 0 16px 0;"><code class="language-python">from playgent import <mark>record</mark>
+
+<mark>@record</mark>
+def inference(user_input: str):
+    response = client.responses.create(...)</code></pre>
+        <pre class="hero-code" style="margin:0 0 16px 0;"><code class="language-python">from playgent import <mark>replay_test</mark>
+
+def test_change_seat(): # Can run with pytest!
+    with <mark>replay_test</mark>("flight-seats") as (inputs, judge):
+        for inp in inputs:
+            inference(**inp.arguments)
+        result = judge.evaluate()
+    assert result.passed</code></pre>
+        <button id="copy-pip-hero" class="pip-install-button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <code style="background:transparent;padding:0;color:inherit;">pip install playgent</code>
+        </button>
+        <div id="copied-tip-hero" class="copied-tooltip">Copied!</div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #hero::before {
+      opacity: 0 !important;
+    }
+    
+    /* Extended borders for hero box */
+    .hero-box::before,
+    .hero-box::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 1px;
+      background: var(--border);
+      z-index: -1;
+    }
+    
+    .hero-box::before {
+      top: -1px;
+    }
+    
+    .hero-box::after {
+      bottom: -1px;
+    }
+    
+    .pip-install-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 0;
+      color: var(--fg);
+      background: transparent;
+      border: 1px solid var(--border-bright);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      width: 100%;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .pip-install-button:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 229, 255, 0.2);
+    }
+    
+    .copied-tooltip {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #000;
+      padding: 6px 12px;
+      font-weight: 600;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    pre code mark {
+      background: transparent;
+      color: #84cc16;
+      font-weight: 600;
+      padding: 0;
+    }
+
+    .hero-code {
+      transition: all 0.3s ease;
+    }
+
+    .hero-code:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.4), 0 0 40px rgba(0, 229, 255, 0.2);
+      transform: translateY(-2px);
+    }
+  </style>
+  
+  <script>
+    const btn = document.getElementById('copy-pip-hero');
+    const tip = document.getElementById('copied-tip-hero');
+    btn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('pip install playgent');
+        if (tip) { tip.style.opacity = '1'; setTimeout(()=> tip.style.opacity = '0', 1200); }
+      } catch {}
+    });
+
+    // Typing effect
+    const typedTextElement = document.getElementById('typed-text');
+    const cursorElement = document.getElementById('cursor');
+    
+    if (typedTextElement) {
+      const textArray = ['Record sessions. Replay as tests.'];
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typingSpeed = 80;
+      const deletingSpeed = 40;
+      const pauseDuration = 2000;
+
+      function type() {
+        if (!typedTextElement) return;
+        const currentText = textArray[textIndex];
+        
+        if (isDeleting) {
+          typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+          
+          if (charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % textArray.length;
+            setTimeout(type, 500);
+            return;
+          }
+          setTimeout(type, deletingSpeed);
+        } else {
+          typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+          
+          if (charIndex === currentText.length) {
+            setTimeout(type, pauseDuration);
+            return;
+          }
+          setTimeout(type, typingSpeed);
+        }
+      }
+
+      // Start typing effect after a short delay
+      setTimeout(type, 500);
+    }
+  </script>
+</section>
+
+<style>
+  @media (max-width: 968px) {
+    #hero > .container > div {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  @media (max-width: 768px) {
+    #hero {
+      padding-top: 120px !important;
+    }
+  }
+</style>
+
+

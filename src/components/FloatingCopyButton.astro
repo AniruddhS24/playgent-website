@@ -1,0 +1,100 @@
+---
+---
+
+<div style="position:fixed;top:28px;right:32px;z-index:60;">
+  <button id="copy-pip" class="pip-button">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    <code style="background:transparent;padding:0;color:inherit;font-size:13px;">pip install playgent</code>
+  </button>
+  <div id="copied-tip" style="position:absolute;top:-36px;right:0;background:var(--accent);color:#000;padding:8px 14px;font-weight:600;font-size:12px;opacity:0;transition:opacity .2s ease;pointer-events:none;border-radius:6px;">Copied!</div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-pip');
+  const tip = document.getElementById('copied-tip');
+  btn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('pip install playgent');
+      if (tip) { tip.style.opacity = '1'; setTimeout(()=> tip.style.opacity = '0', 1200); }
+    } catch {}
+  });
+</script>
+
+<style>
+  .pip-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    color: #000;
+    background: linear-gradient(135deg, #00e5ff 0%, #00b8d4 50%, #0091ea 100%);
+    background-size: 200% 200%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    box-shadow: 
+      0 4px 15px rgba(0, 229, 255, 0.4),
+      0 0 20px rgba(0, 229, 255, 0.2);
+    animation: gradient-shift 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pip-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+  
+  .pip-button:hover::before {
+    left: 100%;
+  }
+  
+  .pip-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 6px 25px rgba(0, 229, 255, 0.6),
+      0 0 30px rgba(0, 229, 255, 0.3);
+  }
+  
+  .pip-button:active {
+    transform: translateY(0);
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .pip-button {
+      padding: 8px 14px;
+      font-size: 12px;
+    }
+    
+    .pip-button svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+</style>
+
+

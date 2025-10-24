@@ -1,0 +1,116 @@
+---
+export interface Props {
+  logos: Array<{
+    src: string;
+    alt: string;
+    href?: string;
+  }>;
+  speed?: number;
+  direction?: 'left' | 'right';
+  logoHeight?: number;
+  gap?: number;
+  pauseOnHover?: boolean;
+}
+
+const { 
+  logos, 
+  speed = 50, 
+  direction = 'left',
+  logoHeight = 32,
+  gap = 48,
+  pauseOnHover = true
+} = Astro.props;
+
+const animationDuration = `${logos.length * 3}s`;
+const animationDirection = direction === 'left' ? 'normal' : 'reverse';
+---
+
+<div class="logo-loop-container" data-pause-on-hover={pauseOnHover}>
+  <div class="logo-loop-track">
+    {[...Array(6)].map((_, copyIndex) => (
+      <ul class="logo-loop-list" aria-hidden={copyIndex > 0}>
+        {logos.map((logo) => (
+          <li class="logo-loop-item">
+            {logo.href ? (
+              <a href={logo.href} target="_blank" rel="noopener noreferrer" title={logo.alt}>
+                <img src={logo.src} alt={logo.alt} height={logoHeight} />
+              </a>
+            ) : (
+              <img src={logo.src} alt={logo.alt} height={logoHeight} />
+            )}
+          </li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</div>
+
+<style define:vars={{ animationDuration, animationDirection, logoHeight: `${logoHeight}px`, gap: `${gap}px` }}>
+  .logo-loop-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .logo-loop-track {
+    display: flex;
+    width: max-content;
+    animation: scroll var(--animationDuration) linear infinite var(--animationDirection);
+  }
+  
+  .logo-loop-container[data-pause-on-hover="true"]:hover .logo-loop-track {
+    animation-play-state: paused;
+  }
+  
+  .logo-loop-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .logo-loop-item {
+    flex-shrink: 0;
+    margin-right: var(--gap);
+    display: flex;
+    align-items: center;
+    height: var(--logoHeight);
+  }
+  
+  .logo-loop-item img {
+    height: var(--logoHeight);
+    width: auto;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  
+  .logo-loop-item:hover img {
+    opacity: 1;
+  }
+  
+  .logo-loop-item a {
+    display: flex;
+    align-items: center;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% / 6));
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .logo-loop-track {
+      animation: none;
+    }
+  }
+</style>
+
