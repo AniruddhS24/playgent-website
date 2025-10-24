@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const { title = "Playgent — Test Your AI Agents", description = "Record agent sessions once. Replay them for testing forever." } = Astro.props;
 ---
 
@@ -21,8 +23,6 @@ const { title = "Playgent — Test Your AI Agents", description = "Record agent 
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/favicon.svg" />
 
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    
     <!-- Prism.js for syntax highlighting -->
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
