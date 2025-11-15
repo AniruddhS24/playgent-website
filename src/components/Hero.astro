@@ -4,27 +4,22 @@
   <div class="container">
     <div class="hero-box" style="border-left:1px solid var(--border);border-right:1px solid var(--border);padding:64px;background:rgba(0,0,0,0.3);display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;position:relative;z-index:10;">
       <div>
-        <p class="eyebrow" style="margin-bottom:20px;">Agent Testing SDK</p>
-        <h1 style="margin-bottom:24px;">Unit tests for AI Agents</h1>
+        <p class="eyebrow" style="margin-bottom:20px;">Production Monitoring for AI Agents</p>
+        <h1 style="margin-bottom:24px;">Find the traces that matter.</h1>
         <p class="lead" style="margin-bottom:12px;">
           <span id="typed-text"></span><span id="cursor" style="animation:blink 1s infinite;">|</span>
         </p>
-        <p style="color:var(--muted);margin:0;font-size:17px;">Turn production agent interactions into reliable test cases with zero-friction instrumentation</p>
+        <p style="color:var(--muted);margin:0;font-size:17px;">Flag unmet user requests. Detect issues. Iterate faster.</p>
       </div>
       <div>
-        <pre class="hero-code" style="margin:0 0 16px 0;"><code class="language-python">from playgent import <mark>record</mark>
+        <pre class="hero-code" style="margin:0 0 16px 0;"><code class="language-python">from openai import OpenAI
+from playgent import <mark>record</mark>, <mark>wrap_openai</mark>
+
+client = <mark>wrap_openai</mark>(OpenAI())
 
 <mark>@record</mark>
 def inference(user_input: str):
     response = client.responses.create(...)</code></pre>
-        <pre class="hero-code" style="margin:0 0 16px 0;"><code class="language-python">from playgent import <mark>replay_test</mark>
-
-def test_change_seat(): # Can run with pytest!
-    with <mark>replay_test</mark>("flight-seats") as (inputs, judge):
-        for inp in inputs:
-            inference(**inp.arguments)
-        result = judge.evaluate()
-    assert result.passed</code></pre>
         <button id="copy-pip-hero" class="pip-install-button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <code style="background:transparent;padding:0;color:inherit;">pip install playgent</code>
@@ -139,7 +134,7 @@ def test_change_seat(): # Can run with pytest!
     const cursorElement = document.getElementById('cursor');
     
     if (typedTextElement) {
-      const textArray = ['Record sessions. Replay as tests.'];
+      const textArray = ['Detect gaps. No evals or datasets.'];
       let textIndex = 0;
       let charIndex = 0;
       let isDeleting = false;
