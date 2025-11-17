@@ -3,19 +3,18 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NavBar from "../components/NavBar.astro";
 import Hero from "../components/Hero.astro";
-import LogoLoop from "../components/LogoLoop.astro";
+import DynamicLogoLoop from "../components/DynamicLogoLoop.astro";
 import HowItWorks from "../components/HowItWorks.astro";
 import Pricing from "../components/Pricing.astro";
 import Footer from "../components/Footer.astro";
 
 const partnerLogos = [
-  { src: "https://img.logo.dev/openai.com?token=pk_HfgoA07ZRleCq6GgNyY27g&format=png&theme=dark", alt: "OpenAI" },
-  { src: "https://img.logo.dev/anthropic.com?token=pk_HfgoA07ZRleCq6GgNyY27g&format=png&theme=dark", alt: "Anthropic" },
-  { src: "https://img.logo.dev/langchain.com?token=pk_HfgoA07ZRleCq6GgNyY27g&format=png&theme=dark", alt: "LangChain" },
-  { src: "https://img.logo.dev/pydantic.ai?token=pk_HfgoA07ZRleCq6GgNyY27g&format=png&theme=dark", alt: "Pydantic AI" },
-  { src: "https://img.logo.dev/crewai.com?token=pk_HfgoA07ZRleCq6GgNyY27g&format=png&theme=dark", alt: "Crew AI" },
-  { src: "https://img.logo.dev/autogenai.com?token=pk_HfgoA07ZRleCq6GgNyY27g&format=png&theme=dark", alt: "Autogen AI" },
-
+  { domain: "openai.com", alt: "OpenAI" },
+  { domain: "anthropic.com", alt: "Anthropic" },
+  { domain: "langchain.com", alt: "LangChain" },
+  { domain: "pydantic.ai", alt: "Pydantic AI" },
+  { domain: "crewai.com", alt: "Crew AI" },
+  { domain: "autogenai.com", alt: "Autogen AI" },
 ];
 
 ---
@@ -26,7 +25,7 @@ const partnerLogos = [
     <Hero />
     <div class="container" style="padding:40px 0;">
       <p style="text-align:center;color:var(--muted);margin-bottom:32px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Works with your agent stack</p>
-      <LogoLoop logos={partnerLogos} speed={30} logoHeight={32} gap={80} />
+      <DynamicLogoLoop logos={partnerLogos} speed={30} logoHeight={32} gap={80} />
     </div>
     <HowItWorks />
     <Pricing />

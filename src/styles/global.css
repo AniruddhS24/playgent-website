@@ -3,7 +3,32 @@
 /* Import Prism dark theme at the top */
 @import "prismjs/themes/prism-tomorrow.css";
 
+/* Light mode (default) */
 :root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #64748b;
+  --accent: #0891b2; /* Cyan adjusted for light mode */
+  --card: #f1f5f9; /* Light gray for code/cards */
+  --line: #e2e8f0;
+  --border: rgba(0, 0, 0, 0.12); /* Dark borders for light mode */
+  --border-bright: rgba(0, 0, 0, 0.2);
+  --ring: #0891b233;
+  --glow: 0 0 20px rgba(8, 145, 178, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --nav-bg: rgba(255, 255, 255, 0.7);
+  --box-bg: rgba(255, 255, 255, 0.5);
+  --pricing-box-bg: rgba(255, 255, 255, 0.3);
+  --features-box-bg: rgba(255, 255, 255, 0.3);
+  --accent-bg: rgba(8, 145, 178, 0.1);
+  --btn-primary-text: #ffffff;
+  --login-btn-bg: #000000;
+  --login-btn-text: #ffffff;
+}
+
+/* Dark mode */
+.dark {
   --bg: #000000;
   --fg: #ffffff;
   --muted: #94a3b8;
@@ -16,6 +41,14 @@
   --glow: 0 0 20px rgba(0, 229, 255, 0.5);
   --glass-bg: rgba(0, 0, 0, 0.7);
   --glass-border: rgba(255, 255, 255, 0.15);
+  --nav-bg: rgba(0, 0, 0, 0.3);
+  --box-bg: rgba(0, 0, 0, 0.3);
+  --pricing-box-bg: rgba(0, 0, 0, 0.2);
+  --features-box-bg: rgba(0, 0, 0, 0.2);
+  --accent-bg: rgba(0, 229, 255, 0.1);
+  --btn-primary-text: #000000;
+  --login-btn-bg: #ffffff;
+  --login-btn-text: #000000;
 }
 
 html {
@@ -116,7 +149,7 @@ body::after {
 
 .btn-primary {
   background: var(--accent);
-  color: #000;
+  color: var(--btn-primary-text);
   box-shadow: var(--glow);
   font-weight: 700;
 }
@@ -154,7 +187,7 @@ body::after {
 
 /* Glass surface for navbar */
 .glass-surface {
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid var(--border-bright);

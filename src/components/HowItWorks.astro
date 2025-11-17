@@ -1,53 +1,82 @@
 ---
-const code1 = `from playgent.openai import OpenAI  # One import change
-from playgent import record
+const code1 = `from openai import OpenAI
+from playgent import record, wrap_openai
+
+client = wrap_openai(OpenAI())
 
 @record
 def inference(user_input: str):
-    client = OpenAI()
     response = client.responses.create(
         model="gpt-4",
         input=[{"role": "user", "content": user_input}]
     )
-    return response`.trim();
+    return response.output_text`.trim();
 ---
 
 <section id="how" class="section" style="padding-top:40px;">
   <div class="container">
     <div class="how-box" style="border-left:1px solid var(--border);border-right:1px solid var(--border);position:relative;">
-      <!-- <h2 style="text-align:center;padding:80px 0 32px;">How it works</h2> -->
       
       <div class="step-item">
         <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-          <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:rgba(0,229,255,0.1);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 17V7a2 2 0 0 1 2-2h7" stroke="currentColor" stroke-width="2"/><path d="M14 3l7 7-7 7V3Z" stroke="var(--accent)" stroke-width="2"/></svg>
+          <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
           </div>
-          <strong style="font-size:20px;">Step 1: Instrument Your Code</strong>
+          <strong style="font-size:20px;">Easy Instrumentation</strong>
         </div>
-        <p style="color:var(--muted);margin-bottom:20px;">Add one decorator. Change one import. That's it.</p>
-        <pre style="margin:0;"><code class="language-python">{code1}</code></pre>
-      </div>
+        <p style="color:var(--muted);margin-bottom:20px;">Add one decorator. Wrap your client. That's it.</p>
+        <pre class="code-highlight-demo" style="margin:0;"><code class="language-python"><span class="blur-line">from openai import OpenAI</span>
+<span class="highlight-line">from playgent import record, wrap_openai</span>
 
-      <div class="step-item">
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-          <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:rgba(0,229,255,0.1);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v20M2 12h20" stroke="var(--accent)" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
-          </div>
-          <strong style="font-size:20px;">Step 2: See Incidents Automatically Created</strong>
-        </div>
-        <p style="color:var(--muted);margin-bottom:20px;">Playgent monitors your agent in production and automatically flags sessions where users struggle or agents fail to accommodate requests.</p>
-        <img src="/incidents.png" alt="Incident Dashboard" style="width:100%;border-radius:12px;border:1px solid var(--border-bright);" />
+<span class="highlight-line">client = wrap_openai(OpenAI())</span>
+
+<span class="highlight-line">@record</span>
+<span class="blur-line">def inference(user_input: str):</span>
+<span class="blur-line">    response = client.responses.create(</span>
+<span class="blur-line">        model="gpt-4",</span>
+<span class="blur-line">        input=[&lbrace;"role": "user", "content": user_input&rbrace;]</span>
+<span class="blur-line">    )</span>
+<span class="blur-line">    return response.output_text</span></code></pre>
       </div>
 
       <div class="step-item" style="border-bottom:none;">
         <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-          <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:rgba(0,229,255,0.1);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3v18h18" stroke="currentColor" stroke-width="2"/><path d="M7 16l4-4 3 3 5-5" stroke="var(--accent)" stroke-width="2"/></svg>
+          <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
           </div>
-          <strong style="font-size:20px;">Observability Built-In</strong>
+          <strong style="font-size:20px;">Automatically Detect Issues</strong>
         </div>
-        <p style="color:var(--muted);margin-bottom:20px;">Track tokens, cost, and more with Langfuse or Helicone-like observability dashboard packaged in.</p>
-        <img src="/session.png" alt="Observability Dashboard" style="width:100%;border-radius:12px;border:1px solid var(--border-bright);" />
+        <p style="color:var(--muted);margin-bottom:24px;">Playgent monitors your agent in production and automatically flags sessions where users struggle or agents fail to accommodate requests.</p>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+          <button class="tab-button active" data-tab="detect">Detect</button>
+          <button class="tab-button" data-tab="observe">Observe</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content-wrapper">
+          <div class="tab-content active" data-tab-content="detect">
+            <div class="image-container">
+              <img src="/incidents.png" alt="Incident Dashboard" style="width:100%;height:auto;display:block;" />
+            </div>
+            <p class="image-caption">Automatically identify and flag incidents where your agent struggles or fails to meet user needs</p>
+          </div>
+
+          <div class="tab-content" data-tab-content="observe">
+            <div class="image-container">
+              <img src="/session.png" alt="Observability Dashboard" style="width:100%;height:auto;display:block;" />
+            </div>
+            <p class="image-caption">Track tokens, costs, latency, and performance metrics with built-in observability</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -81,11 +110,211 @@ def inference(user_input: str):
     border-bottom: 1px solid var(--border);
   }
 
+  /* Code highlight effect */
+  .code-highlight-demo .blur-line {
+    filter: blur(3px);
+    opacity: 0.4;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  .code-highlight-demo .highlight-line {
+    filter: blur(0);
+    opacity: 1;
+    position: relative;
+  }
+
+  .code-highlight-demo:hover .blur-line {
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  /* Tab Navigation */
+  .tab-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    justify-content: center;
+  }
+
+  .tab-button {
+    padding: 12px 32px;
+    background: transparent;
+    border: 1px solid var(--border-bright);
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  .tab-button:hover {
+    border-color: var(--accent);
+    color: var(--fg);
+  }
+
+  .tab-button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--btn-primary-text);
+  }
+
+  /* Tab Content */
+  .tab-content-wrapper {
+    position: relative;
+  }
+
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .image-container {
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .image-caption {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+  }
+
   @media (max-width: 768px) {
     .step-item {
       padding: 40px 32px;
     }
+
+    .tab-button {
+      padding: 10px 24px;
+      font-size: 12px;
+    }
   }
 </style>
+
+<script>
+  function initTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    let autoPlayInterval: number;
+    const AUTO_PLAY_DELAY = 5000; // 5 seconds
+
+    // Get theme from document
+    const getCurrentTheme = () => {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    };
+
+    // Update images based on theme
+    const updateTabImages = () => {
+      const theme = getCurrentTheme();
+      const detectImg = document.querySelector('.tab-content[data-tab-content="detect"] img') as HTMLImageElement;
+      const observeImg = document.querySelector('.tab-content[data-tab-content="observe"] img') as HTMLImageElement;
+      
+      if (detectImg) {
+        detectImg.src = theme === 'dark' ? '/incidentdark.png' : '/incidents.png';
+      }
+      if (observeImg) {
+        observeImg.src = theme === 'dark' ? '/sessiondark.png' : '/session.png';
+      }
+    };
+
+    // Switch to a specific tab
+    const switchToTab = (tabName: string) => {
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      const targetButton = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
+      const targetContent = document.querySelector(`.tab-content[data-tab-content="${tabName}"]`);
+      
+      if (targetButton && targetContent) {
+        targetButton.classList.add('active');
+        targetContent.classList.add('active');
+      }
+    };
+
+    // Auto-play functionality
+    const startAutoPlay = () => {
+      stopAutoPlay(); // Clear any existing interval
+      autoPlayInterval = window.setInterval(() => {
+        const activeButton = document.querySelector('.tab-button.active');
+        const currentTab = activeButton?.getAttribute('data-tab');
+        const nextTab = currentTab === 'detect' ? 'observe' : 'detect';
+        switchToTab(nextTab);
+      }, AUTO_PLAY_DELAY);
+    };
+
+    const stopAutoPlay = () => {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+      }
+    };
+
+    // Manual tab switching
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabName = button.getAttribute('data-tab');
+        if (tabName) {
+          stopAutoPlay();
+          switchToTab(tabName);
+          // Restart auto-play after manual interaction
+          setTimeout(startAutoPlay, AUTO_PLAY_DELAY);
+        }
+      });
+    });
+
+    // Initialize images on load
+    updateTabImages();
+
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      updateTabImages();
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    // Start auto-play
+    startAutoPlay();
+
+    // Pause auto-play when user is hovering over the tab area
+    const tabWrapper = document.querySelector('.tab-content-wrapper');
+    if (tabWrapper) {
+      tabWrapper.addEventListener('mouseenter', stopAutoPlay);
+      tabWrapper.addEventListener('mouseleave', startAutoPlay);
+    }
+  }
+
+  // Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
+
+  // Re-run after page navigation (for Astro view transitions)
+  document.addEventListener('astro:after-swap', initTabs);
+</script>
 
 

@@ -27,6 +27,29 @@ const { title = "Playgent — Test Your AI Agents", description = "Record agent 
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/keep-markup/prism-keep-markup.min.js"></script>
+    
+    <!-- Theme initialization - runs before page renders to prevent flash -->
+    <script is:inline>
+      (function() {
+        function getTheme() {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme');
+          }
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+          }
+          return 'light';
+        }
+        
+        const theme = getTheme();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        
+        // Store theme for later use by scripts
+        window.__theme = theme;
+      })();
+    </script>
   </head>
   <body>
     <slot />
