@@ -1,0 +1,35 @@
+---
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+import Hero from "../components/Hero.astro";
+import DynamicLogoLoop from "../components/DynamicLogoLoop.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Pricing from "../components/Pricing.astro";
+import Footer from "../components/Footer.astro";
+
+const partnerLogos = [
+  { domain: "openai.com", alt: "OpenAI" },
+  { domain: "anthropic.com", alt: "Anthropic" },
+  { domain: "langchain.com", alt: "LangChain" },
+  { domain: "pydantic.ai", alt: "Pydantic AI" },
+  { domain: "crewai.com", alt: "Crew AI" },
+  { domain: "autogenai.com", alt: "Autogen AI" },
+];
+
+---
+
+<BaseLayout title="Playgent — Test AI Agents with Real Conversations">
+  <NavBar showDocs={true} />
+  <main>
+    <Hero />
+    <div class="container" style="padding:40px 0;">
+      <p style="text-align:center;color:var(--muted);margin-bottom:32px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Works with your agent stack</p>
+      <DynamicLogoLoop logos={partnerLogos} speed={30} logoHeight={32} gap={80} />
+    </div>
+    <HowItWorks />
+    <Pricing />
+  </main>
+  <Footer />
+</BaseLayout>
+
