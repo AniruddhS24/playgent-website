@@ -97,9 +97,13 @@ import Cubes from "../components/Cubes.tsx";
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
               </div>
-              <strong style="font-size:20px;">Create Your Own Simulation Environment</strong>
+              <strong style="font-size:20px;">Create Infinite Simulation Environments</strong>
             </div>
             <p style="color:var(--muted);margin-bottom:32px;">Select a user persona to see how Playgent simulates realistic testing scenarios.</p>
+
+            <p class="mobile-only" style="color:var(--muted);font-size:14px;text-align:center;padding:24px;background:var(--box-bg);border:1px solid var(--border-bright);margin-bottom:32px;">
+              Please view on desktop for best experience
+            </p>
 
             <div class="scenario-animation desktop-only">
               <!-- Profile Cards Carousel -->
@@ -140,7 +144,7 @@ import Cubes from "../components/Cubes.tsx";
                   <div class="sandbox-header">Playgent Sandbox</div>
                   <div class="sandbox-content">
                     <div class="sandbox-section">
-                      <div class="sandbox-section-label">Simulated User Persona</div>
+                      <div class="sandbox-section-label">Simulated User (LLM)</div>
                       <div class="sandbox-row">
                         <img src="/user-placeholder.png" width="40" height="40" id="sandbox-user-icon" class="sandbox-icon" alt="User" />
                         <span class="user-name" id="user-name">Alex</span>
@@ -1975,13 +1979,13 @@ import Cubes from "../components/Cubes.tsx";
             if (promptLabel) promptLabel.classList.add('glow');
 
             const timeout4 = setTimeout(() => {
+              // Move to next scenario immediately
+              currentIndex++;
               resetHighlights();
               if (optimizeLabel) optimizeLabel.style.opacity = '0';
               
-              // Move to next scenario and repeat
-              currentIndex++;
-              const timeout5 = setTimeout(cycleScenario, 500);
-              animationTimeouts.push(timeout5);
+              // Start next scenario instantly
+              cycleScenario();
             }, 4000);
             animationTimeouts.push(timeout4);
           }, 4000);
