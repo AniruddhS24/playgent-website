@@ -110,6 +110,14 @@ body::after {
   right: 10%;
 }
 
+/* Hide vertical guide lines on mobile */
+@media (max-width: 768px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+}
+
 /* Reveal animation */
 .reveal {
   opacity: 1;

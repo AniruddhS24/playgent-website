@@ -13,16 +13,16 @@ import Cubes from "../components/Cubes.tsx";
     <!-- Hero Section -->
     <section id="hero" class="section" style="padding-top:160px;padding-bottom:40px;position:relative;overflow:hidden;">
       <div class="container">
-        <div class="hero-box" style="border-left:1px solid var(--border);border-right:1px solid var(--border);padding:64px;background:var(--box-bg);display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;position:relative;z-index:10;">
-          <div>
+        <div class="hero-box">
+          <div class="hero-content">
             <p class="eyebrow" style="margin-bottom:20px;">Playgent Vanguard</p>
             <h1 style="margin-bottom:24px;">Ship agents with confidence.</h1>
             <p class="lead" style="margin-bottom:12px;">
               <span id="typed-text"></span><span id="cursor" style="animation:blink 1s infinite;">|</span>
             </p>
-            <p style="color:var(--muted);margin:0;font-size:17px;">We build robust testing environments tailored to your agentic AI use cases.</p>
+            <p style="color:var(--muted);margin:0;font-size:17px;">We build robust testing environments tailored to your conversational AI use cases.</p>
           </div>
-          <div style="display:flex;justify-content:center;align-items:center;">
+          <div class="hero-cubes desktop-only">
             <div style="width:70%;max-width:400px;">
               <Cubes 
                 client:load
@@ -50,192 +50,329 @@ import Cubes from "../components/Cubes.tsx";
             <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
               <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-              </div>
-              <strong style="font-size:20px;">Understanding Your Use Cases</strong>
-            </div>
-            <p style="color:var(--muted);margin-bottom:32px;">We start by deeply understanding your conversational AI use cases, user personas, and business requirements.</p>
-            
-            <div class="discovery-steps">
-              <div class="discovery-card">
-                <div class="discovery-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
-                </div>
-                <h4>Interview Stakeholders</h4>
-                <p>Deep-dive sessions with your team to understand requirements and constraints</p>
-              </div>
-
-              <div class="discovery-card">
-                <div class="discovery-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                  </svg>
-                </div>
-                <h4>Analyze Agent Behavior</h4>
-                <p>Map out current agent flows, decision points, and interaction patterns</p>
-              </div>
-
-              <div class="discovery-card">
-                <div class="discovery-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                </div>
-                <h4>Document Requirements</h4>
-                <p>Comprehensive documentation of edge cases, risks, and success criteria</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="step-item">
-            <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-              <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="3" y1="9" x2="21" y2="9"></line>
                   <line x1="9" y1="21" x2="9" y2="9"></line>
                 </svg>
               </div>
-              <strong style="font-size:20px;">Designing Test Scenarios</strong>
+              <strong style="font-size:20px;">Testing Ecosystem for AI Agents</strong>
             </div>
-            <p style="color:var(--muted);margin-bottom:32px;">Based on your use cases, we create comprehensive test scenarios that cover your critical paths, edge cases, and failure modes. These cases will be designed to capture key edge cases before going into production, speeding up your time to market.</p>
-            
-            <div class="scenario-animation">
-              <div class="scenario-flow">
-                <div class="scenario-card-stack">
-                  <div class="card-shadow card-shadow-2"></div>
-                  <div class="card-shadow card-shadow-1"></div>
-                  <div class="scenario-box" id="scenario-box">
-                    <div class="scenario-header">Scenario</div>
-                    <div class="scenario-content">
-                      <span class="scenario-text">Fetch all risk reports and summarize the main points</span>
-                    </div>
-                  </div>
-                </div>
+            <p style="color:var(--muted);margin-bottom:32px;">We provide you with all the tools you need to test AI agents.</p>
 
-                <div class="flow-arrow">
-                  <div class="arrow-line"></div>
-                  <div class="arrow-head"></div>
+            <!-- Step Cards -->
+            <div class="step-cards">
+              <div class="step-card">
+                <div class="step-card-header">
+                  <span class="step-number">1</span>
+                  <span class="step-title">Simulated Environments</span>
                 </div>
-
-                <div class="agent-box">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                    <circle cx="9" cy="10" r="1" fill="var(--accent)"></circle>
-                    <circle cx="15" cy="10" r="1" fill="var(--accent)"></circle>
-                    <path d="M9 14h6" stroke-linecap="round"></path>
-                  </svg>
-                  <span>Agent</span>
+                <p class="step-description">We create fake users that mimic your real users, along with fake data across all their apps and tools. With over 100 supported integrations, we mock all tool calls to produce the easiest to set-up sandbox environments.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-card-header">
+                  <span class="step-number">2</span>
+                  <span class="step-title">Interactive Testing</span>
                 </div>
-
-                <div class="outcome-arrows">
-                  <div class="outcome-branch success-branch" id="success-branch">
-                    <div class="outcome-arrow success-arrow">
-                      <div class="arrow-line"></div>
-                      <div class="arrow-head"></div>
-                    </div>
-                    <div class="outcome-label success-label">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      Success
-                    </div>
-                  </div>
-
-                  <div class="outcome-branch failure-branch" id="failure-branch">
-                    <div class="outcome-arrow failure-arrow">
-                      <div class="arrow-line"></div>
-                      <div class="arrow-head"></div>
-                    </div>
-                    <div class="outcome-label failure-label">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                      Failure
-                    </div>
-                  </div>
+                <p class="step-description">Simulated users interact with your agent with test inputs, and Playgent's suite of 27+ evaluation metrics grade every aspect of agent behavior—from correctness and clarity to latency and tool usage patterns.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-card-header">
+                  <span class="step-number">3</span>
+                  <span class="step-title">Close the Loop</span>
                 </div>
+                <p class="step-description">Close the loop by optimizing prompts through research-driven techniques or custom RL objectives. Your agent gets better with every iteration.</p>
+              </div>
               </div>
 
-              <div class="failure-cases" id="failure-cases">
-                <!-- Failure case cards will be dynamically added here -->
-              </div>
+          </div>
 
-              <p class="scenario-caption">Detect failure cases before going into production</p>
+          <!-- Simulation Environment Section -->
+          <div class="step-item">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+              <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <strong style="font-size:20px;">Create Your Own Simulation Environment</strong>
+            </div>
+            <p style="color:var(--muted);margin-bottom:32px;">Select a user persona to see how Playgent simulates realistic testing scenarios.</p>
+
+            <div class="scenario-animation desktop-only">
+              <!-- Profile Cards Carousel -->
+              <div class="profile-carousel">
+                <div class="carousel-track" id="carousel-track">
+                  <div class="profile-card" data-example="coding" data-index="0">
+                    <img src="/alex-icon.png" alt="Alex" class="profile-avatar" />
+                    <div class="profile-info">
+                      <span class="profile-name">Alex</span>
+                      <span class="profile-role">Software Engineer</span>
+                    </div>
+                    <p class="profile-desc">Works with GitHub, Jira, and Linear to manage code and track issues.</p>
+                  </div>
+                  <div class="profile-card" data-example="customer-support" data-index="1">
+                    <img src="/sandra-icon.png" alt="Sandra" class="profile-avatar" />
+                    <div class="profile-info">
+                      <span class="profile-name">Sandra</span>
+                      <span class="profile-role">Support Lead</span>
+                    </div>
+                    <p class="profile-desc">Uses Zendesk, Slack, and Gmail to handle customer inquiries.</p>
+                  </div>
+                  <div class="profile-card" data-example="accounting" data-index="2">
+                    <img src="/michael-icon.png" alt="Michael" class="profile-avatar" />
+                    <div class="profile-info">
+                      <span class="profile-name">Michael</span>
+                      <span class="profile-role">Finance Manager</span>
+                    </div>
+                    <p class="profile-desc">Manages invoices and payments with QuickBooks, Stripe, and Gmail.</p>
+                  </div>
+                </div>
+                <p class="carousel-description" id="carousel-description">Sarah is a fake customer support member at Acme corp using agents to manage customer support tickets.</p>
+                </div>
+
+              <!-- Top Row: Sandbox -> Input/Output -> Agent -->
+              <div class="top-row">
+                <!-- Playgent Sandbox -->
+                <div class="sandbox-box" id="sandbox-box">
+                  <div class="sandbox-header">Playgent Sandbox</div>
+                  <div class="sandbox-content">
+                    <div class="sandbox-section">
+                      <div class="sandbox-section-label">Simulated User Persona</div>
+                      <div class="sandbox-row">
+                        <img src="/user-placeholder.png" width="40" height="40" id="sandbox-user-icon" class="sandbox-icon" alt="User" />
+                        <span class="user-name" id="user-name">Alex</span>
+                </div>
+              </div>
+                    <div class="sandbox-section">
+                      <div class="sandbox-section-label">Simulated Environments</div>
+                      <div class="sandbox-row" id="integrations-container">
+                        <img src="/github-icon.png" width="40" height="40" class="integration-item" data-integration="github" id="integration-github" alt="GitHub" />
+                        <img src="/jira-icon.png" width="40" height="40" class="integration-item" data-integration="jira" id="integration-jira" alt="Jira" />
+                        <img src="/linear-icon.png" width="40" height="40" class="integration-item" data-integration="linear" id="integration-linear" alt="Linear" />
+                </div>
+              </div>
             </div>
           </div>
 
+                <!-- Arrows Container -->
+                <div class="arrows-container">
+                  <!-- Forward arrow: Sandbox -> Input -->
+                  <div class="arrow-horizontal forward" id="arrow-input-forward">
+                    <div class="arrow-line"></div>
+                    <div class="arrow-head"></div>
+              </div>
+                  <!-- Reverse arrow: Sandbox <- Output -->
+                  <div class="arrow-horizontal reverse" id="arrow-output-reverse">
+                    <div class="arrow-line"></div>
+                    <div class="arrow-head"></div>
+            </div>
+                </div>
+
+                <!-- Input/Output Section -->
+                <div class="input-output-box">
+                  <div class="io-item" id="scenario-input-box">
+                    <div class="io-label">Input</div>
+                    <div class="io-text" id="scenario-input-text">Fetch all risk reports and summarize the main points</div>
+                    </div>
+                  <div class="io-item" id="agent-response-box">
+                    <div class="io-label">Output</div>
+                    <div class="io-text" id="agent-response-text"></div>
+                    <div class="io-text tool-call" id="agent-tool-call"></div>
+                  </div>
+                </div>
+
+                <!-- Arrows Container -->
+                <div class="arrows-container">
+                  <!-- Forward arrow: Input -> Agent -->
+                  <div class="arrow-horizontal forward" id="arrow-agent-forward">
+                  <div class="arrow-line"></div>
+                  <div class="arrow-head"></div>
+                  </div>
+                  <!-- Reverse arrow: Output <- Agent -->
+                  <div class="arrow-horizontal reverse" id="arrow-agent-reverse">
+                    <div class="arrow-line"></div>
+                    <div class="arrow-head"></div>
+                  </div>
+                </div>
+
+                <!-- Agent -->
+                <div class="agent-box" id="agent-box">
+                  <div class="agent-label">Your Agent</div>
+                  <div class="agent-content">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.5">
+                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                      <circle cx="9" cy="10" r="1" fill="var(--muted)"></circle>
+                      <circle cx="15" cy="10" r="1" fill="var(--muted)"></circle>
+                    <path d="M9 14h6" stroke-linecap="round"></path>
+                  </svg>
+                    <div class="agent-labels">
+                      <div class="agent-label-item" id="agent-prompt-label">
+                        <span>Prompt</span>
+                      </div>
+                      <div class="agent-label-item">
+                        <span>Tools</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+              <!-- Arrows from Sandbox to Evals and Evals to Agent -->
+              <div class="vertical-arrows-container">
+                <div class="arrow-vertical-down" id="arrow-sandbox-to-evals">
+                      <div class="arrow-line"></div>
+                      <div class="arrow-head"></div>
+                    </div>
+                <div class="arrow-vertical-up" id="arrow-evals-to-agent">
+                  <div class="arrow-head"></div>
+                  <div class="arrow-line"></div>
+                </div>
+                <div class="optimize-label" id="optimize-label">
+                  <svg class="spinner" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                      </svg>
+                  Optimize prompt
+                    </div>
+                  </div>
+
+              <!-- Bottom Row: Playgent Evals -->
+              <div class="bottom-row">
+                <div class="evals-box" id="evals-box">
+                  <div class="evals-header">Playgent Evals</div>
+                  <div class="evals-content">
+                    <div class="evals-details">
+                      <div class="evals-top-row">
+                        <div class="status-badge" id="status-badge">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                          <span id="status-text">Passed</span>
+                    </div>
+                        <div class="evals-scores">
+                          <div class="score-item">
+                            <span class="score-label">Correctness</span>
+                            <span class="score-value" id="score-correctness">0.95</span>
+                  </div>
+                          <div class="score-item">
+                            <span class="score-label">Clarity</span>
+                            <span class="score-value" id="score-clarity">0.88</span>
+                </div>
+                          <div class="score-item">
+                            <span class="score-label">Completeness</span>
+                            <span class="score-value" id="score-completeness">0.92</span>
+              </div>
+              </div>
+                      </div>
+                      <div class="evals-section">
+                        <div class="evals-section-title">LLM Grader Rationale</div>
+                        <div class="evals-section-content" id="grader-rationale">The agent correctly fetched and summarized the risk reports as requested. The response is clear and addresses all main points.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pagination Dots -->
+              <div class="pagination-dots" id="pagination-dots">
+                <button class="pagination-dot active" data-step="0" aria-label="Step 1"></button>
+                <button class="pagination-dot" data-step="1" aria-label="Step 2"></button>
+                <button class="pagination-dot" data-step="2" aria-label="Step 3"></button>
+                <button class="pagination-dot" data-step="3" aria-label="Step 4"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
           <div class="step-item" style="border-bottom:none;">
             <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
               <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
               </div>
-              <strong style="font-size:20px;">Building a test harness</strong>
+              <strong style="font-size:20px;">Frequently Asked Questions</strong>
             </div>
-            <p style="color:var(--muted);margin-bottom:32px;">We work with your engineering team to develop a robust test environment tailored to AI agents. Our platform is designed to be easily integrated into your existing CI/CD pipeline.</p>
-            
-            <div class="infrastructure-section">
-              <div class="pipeline-flow">
-                <div class="pipeline-step">
-                  <div class="pipeline-icon code-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="16 18 22 12 16 6"></polyline>
-                      <polyline points="8 6 2 12 8 18"></polyline>
+            <p style="color:var(--muted);margin-bottom:32px;">Everything you need to know about Playgent's testing platform.</p>
+
+            <div class="faq-container">
+              <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span>Why use Playgent over other testing tools?</span>
+                  <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
+                </button>
+                <div class="faq-answer">
+                  <p>Playgent is the only testing platform that develops custom user environments. Go beyond static datasets and give your agents simulated users with full profiles and complete suites of tools. Our approach creates realistic, dynamic testing scenarios that reflect how your agent will perform in the real world.</p>
                   </div>
-                  <span>Agent Development</span>
                 </div>
 
-                <div class="pipeline-arrow-wrapper">
-                  <div class="arrow-line"></div>
-                  <div class="arrow-head"></div>
+              <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span>Is it fast to set up?</span>
+                  <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes! Playgent's method is mocking MCP tools, so you never need to worry about auth setup or manually configuring integrations. To your agent, it seems like a real user with real connected apps—but it's all simulated behind the scenes. Most teams are up and running within hours, not weeks.</p>
+                </div>
                 </div>
 
-                <div class="pipeline-step highlighted">
-                  <div class="pipeline-icon test-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span>What integrations do you support?</span>
+                  <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
+                </button>
+                <div class="faq-answer">
+                  <p>We support over 100 integrations out of the box, including popular tools like GitHub, Jira, Linear, Slack, Zendesk, Stripe, QuickBooks, Gmail, and many more. If you need a custom integration, our team can build it for you as part of your onboarding.</p>
                   </div>
-                  <span>CI + Testing</span>
                 </div>
 
-                <div class="pipeline-arrow-wrapper">
-                  <div class="arrow-line"></div>
-                  <div class="arrow-head"></div>
+              <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span>How does the evaluation system work?</span>
+                  <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="faq-answer">
+                  <p>Playgent uses a suite of 27+ evaluation metrics powered by LLM-based graders. Each interaction is scored across dimensions like correctness, clarity, completeness, latency, and tool usage patterns. You get detailed rationales for every score, making it easy to identify exactly where your agent needs improvement.</p>
+                </div>
                 </div>
 
-                <div class="pipeline-step">
-                  <div class="pipeline-icon deploy-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="10 8 16 12 10 16"></polyline>
+              <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span>Can I integrate Playgent into my CI/CD pipeline?</span>
+                  <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
-                  </div>
-                  <span>Deployment</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Absolutely. Playgent provides APIs and CLI tools that integrate seamlessly with GitHub Actions, GitLab CI, Jenkins, and other popular CI/CD platforms. Run your agent tests automatically on every pull request and catch regressions before they reach production.</p>
                 </div>
               </div>
 
-              <div class="infrastructure-preview" id="infrastructure-preview">
-                <img src="/incidents.png" alt="Testing Dashboard" />
+              <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span>What makes the simulated users realistic?</span>
+                  <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="faq-answer">
+                  <p>Each simulated user has a complete profile including personality traits, communication style, domain expertise, and connected apps with realistic data. They behave like real users—asking follow-up questions, making mistakes, and testing edge cases your team might never think of.</p>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -268,6 +405,26 @@ import Cubes from "../components/Cubes.tsx";
 <style>
   #hero::before {
     opacity: 0 !important;
+  }
+  
+  /* Hero Box */
+  .hero-box {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    padding: 64px;
+    background: var(--box-bg);
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-cubes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Extended borders for hero box */
@@ -322,115 +479,251 @@ import Cubes from "../components/Cubes.tsx";
     border-bottom: 1px solid var(--border);
   }
 
-  /* Discovery Steps */
-  .discovery-steps {
+  /* Step Cards */
+  .step-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    margin-bottom: 48px;
   }
 
-  .discovery-card {
-    border: 1px solid var(--border-bright);
-    padding: 32px 24px;
-    background: var(--features-box-bg);
-    transition: all 0.3s ease;
-    text-align: center;
+  .step-card {
+    background: var(--box-bg);
+    border: 2px solid var(--border-bright);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .discovery-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 229, 255, 0.15);
+  .step-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  .discovery-icon {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 20px;
+  .step-number {
+    width: 32px;
+    height: 32px;
     display: grid;
     place-items: center;
-    border: 1px solid var(--accent);
-    background: var(--accent-bg);
-    transition: all 0.3s ease;
-  }
-
-  .discovery-card:hover .discovery-icon {
     background: var(--accent);
+    color: var(--btn-primary-text);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', monospace;
   }
 
-  .discovery-card:hover .discovery-icon svg {
-    stroke: var(--btn-primary-text);
-  }
-
-  .discovery-card h4 {
+  .step-title {
     font-size: 16px;
-    margin-bottom: 12px;
+    font-weight: 700;
     color: var(--fg);
+    font-family: 'Space Grotesk', monospace;
   }
 
-  .discovery-card p {
+  .step-description {
     font-size: 14px;
     color: var(--muted);
-    margin: 0;
     line-height: 1.6;
   }
 
   /* Scenario Animation */
   .scenario-animation {
-    padding: 48px 24px;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .scenario-flow {
+  /* Profile Cards Carousel */
+  .profile-carousel {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    perspective: 1000px;
+    overflow: visible;
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+
+  .carousel-description {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .carousel-track {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    height: 220px;
+  }
+
+  .profile-card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    background: var(--box-bg);
+    border: 2px solid var(--border-bright);
+    cursor: pointer;
+    width: 260px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+  }
+
+  /* Position states for carousel */
+  .profile-card[data-position="left"] {
+    transform: translateX(-140%) scale(0.8);
+    opacity: 0.5;
+    z-index: 1;
+    filter: blur(1px);
+  }
+
+  .profile-card[data-position="center"] {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    z-index: 3;
+    border-color: var(--accent);
+    background: var(--accent-bg);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
+  }
+
+  .profile-card[data-position="right"] {
+    transform: translateX(140%) scale(0.8);
+    opacity: 0.5;
+    z-index: 1;
+    filter: blur(1px);
+  }
+
+  .profile-card:hover {
+    opacity: 0.8;
+  }
+
+  .profile-card[data-position="center"]:hover {
+    opacity: 1;
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.35);
+  }
+
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-bright);
+    transition: all 0.5s ease;
+  }
+
+  .profile-card[data-position="center"] .profile-avatar {
+    border-color: var(--accent);
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .profile-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--fg);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .profile-role {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  .profile-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Pagination Dots */
+  .pagination-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    padding: 16px 0;
+  }
+
+  .pagination-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--border-bright);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .pagination-dot:hover {
+    border-color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  .pagination-dot.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+  }
+
+  .pagination-dot.completed {
+    border-color: var(--accent);
+    background: rgba(0, 229, 255, 0.3);
+  }
+
+  /* Top Row: Sandbox -> Input/Output -> Agent */
+  .top-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
-    margin-bottom: 40px;
-    min-height: 240px;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: nowrap;
   }
 
-  /* Card Stack Effect */
-  .scenario-card-stack {
-    position: relative;
-    min-width: 320px;
-    max-width: 320px;
-  }
-
-  .card-shadow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  /* Sandbox Box - Fixed Size */
+  .sandbox-box {
+    width: 280px;
+    height: 240px;
+    border: 2px solid var(--accent);
     background: var(--box-bg);
-    border: 2px solid var(--border-bright);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 4px;
+    border-radius: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
   }
 
-  .card-shadow-1 {
-    transform: translate(-4px, -4px);
-    opacity: 0.5;
-    z-index: 0;
+  .sandbox-box.highlight {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
   }
 
-  .card-shadow-2 {
-    transform: translate(-8px, -8px);
-    opacity: 0.25;
-    z-index: -1;
+  .sandbox-box.grayed {
+    opacity: 0.4;
+    filter: grayscale(0.5);
   }
 
-  .scenario-box {
-    position: relative;
-    border: 2px solid var(--border-bright);
-    background: var(--box-bg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    z-index: 1;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .scenario-header {
-    padding: 12px 20px;
+  .sandbox-header {
+    padding: 10px 16px;
     background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 229, 255, 0.05) 100%);
     border-bottom: 1px solid var(--accent);
     font-size: 13px;
@@ -439,333 +732,441 @@ import Cubes from "../components/Cubes.tsx";
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-family: 'Space Grotesk', monospace;
+    text-align: center;
+    flex-shrink: 0;
   }
 
-  .scenario-content {
-    padding: 24px 20px;
+  .sandbox-content {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    justify-content: center;
+    overflow: visible;
   }
 
-  .scenario-text {
-    font-size: 15px;
+  .sandbox-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sandbox-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  .sandbox-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    overflow: visible;
+    padding: 8px 0;
+  }
+
+  .sandbox-row img,
+  .sandbox-row svg {
+    transition: all 0.3s ease;
+    object-fit: contain;
+  }
+
+  #sandbox-user-icon {
+    opacity: 1;
+  }
+
+  .user-name {
+    font-size: 16px;
+    font-weight: 600;
     color: var(--fg);
-    line-height: 1.7;
-    font-family: inherit;
+    font-family: 'Space Grotesk', monospace;
   }
 
-  /* Improved Flow Arrows */
-  .flow-arrow {
+  .integration-item {
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    object-fit: contain;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .integration-item.highlight {
+    opacity: 1 !important;
+    transform: scale(1.15) !important;
+  }
+
+  /* Arrows Container */
+  .arrows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 108px;
+    flex-shrink: 0;
+    height: 240px;
+    justify-content: center;
+  }
+
+  /* Horizontal Arrows */
+  .arrow-horizontal {
     display: flex;
     align-items: center;
     gap: 0;
-    position: relative;
+    transition: all 0.3s ease;
+    opacity: 0.3;
   }
 
-  .flow-arrow .arrow-line {
-    width: 50px;
+  .arrow-horizontal.highlight {
+    opacity: 1;
+  }
+
+  .arrow-horizontal.highlight .arrow-line {
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  }
+
+  .arrow-horizontal.highlight .arrow-head {
+    border-left-color: var(--accent);
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.8));
+  }
+
+  .arrow-horizontal .arrow-line {
+    width: 40px;
     height: 2px;
     background: var(--muted);
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
   }
 
-  .flow-arrow .arrow-head {
+  .arrow-horizontal.forward .arrow-head {
     width: 0;
     height: 0;
-    border-left: 8px solid var(--muted);
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    transition: border-left-color 0.3s ease;
+    border-left: 6px solid var(--muted);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: all 0.3s ease;
   }
 
-  .agent-box {
+  .arrow-horizontal.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .arrow-horizontal.reverse .arrow-head {
+    width: 0;
+    height: 0;
+    border-right: 6px solid var(--muted);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .arrow-horizontal.reverse.highlight .arrow-head {
+    border-right-color: var(--accent);
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.8));
+  }
+
+  /* Input/Output Box - Fixed Size */
+  .input-output-box {
+    width: 280px;
+    height: 240px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 24px;
-    border: 2px solid var(--accent);
-    background: var(--accent-bg);
-    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.15);
+    gap: 8px;
+    flex-shrink: 0;
   }
 
-  .agent-box span {
+  .io-item {
+    flex: 1;
+    border: 2px solid var(--border-bright);
+    background: var(--box-bg);
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  .io-item.highlight {
+    border-color: var(--border-bright);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .io-item.grayed {
+    opacity: 0.4;
+    filter: grayscale(0.5);
+  }
+
+  .io-label {
+    padding: 8px 14px;
+    background: var(--border);
+    border-bottom: 1px solid var(--border-bright);
     font-size: 12px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--fg);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-family: 'Space Grotesk', monospace;
-  }
-
-  .outcome-arrows {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    position: relative;
-  }
-
-  .outcome-branch {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    opacity: 1;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .outcome-branch .outcome-arrow,
-  .outcome-branch .outcome-label {
-    opacity: 0.25;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .outcome-branch.active .outcome-arrow,
-  .outcome-branch.active .outcome-label {
-    opacity: 1;
-  }
-
-  .scenario-box,
-  .scenario-text {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Outcome Arrows */
-  .outcome-arrow {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-right: 12px;
-  }
-
-  .success-arrow .arrow-line {
-    width: 60px;
-    height: 2px;
-    background: #22c55e;
-  }
-
-  .success-arrow .arrow-head {
-    width: 0;
-    height: 0;
-    border-left: 10px solid #22c55e;
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-  }
-
-  .failure-arrow .arrow-line {
-    width: 60px;
-    height: 2px;
-    background: #ef4444;
-  }
-
-  .failure-arrow .arrow-head {
-    width: 0;
-    height: 0;
-    border-left: 10px solid #ef4444;
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-  }
-
-  .outcome-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 10px 20px;
-    border: 2px solid;
-    background: var(--box-bg);
-    white-space: nowrap;
-    font-family: 'Space Grotesk', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  .success-label {
-    border-color: #22c55e;
-    color: #22c55e;
-    background: rgba(34, 197, 94, 0.05);
-  }
-
-  .failure-label {
-    border-color: #ef4444;
-    color: #ef4444;
-    background: rgba(239, 68, 68, 0.05);
-  }
-
-  .failure-cases {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    min-height: 80px;
-    margin-bottom: 24px;
-    justify-content: center;
-  }
-
-  .failure-case-card {
-    display: flex !important;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 18px 12px 14px;
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.08) 100%);
-    border: 2px solid #ef4444;
-    border-radius: 8px;
-    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
-    position: relative;
-    transition: all 0.2s ease;
-  }
-
-  .failure-case-card .error-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    background: #ef4444;
-    color: white;
-    font-size: 13px;
-    font-weight: 700;
-    border-radius: 50%;
     flex-shrink: 0;
-    line-height: 1;
   }
 
-  .failure-case-card .error-text {
-    font-size: 14px;
+  .io-text {
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--fg);
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    flex: 1;
+    word-wrap: break-word;
+  }
+
+  .io-text:empty {
+    display: none;
+  }
+
+  .io-text.tool-call {
+    color: var(--accent);
     font-weight: 600;
-    color: #ef4444;
     font-family: 'Space Grotesk', monospace;
-    text-transform: none;
-    letter-spacing: 0.02em;
+    padding: 10px 12px;
+    display: none;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
   }
 
-  .failure-case-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+  .io-text.tool-call.show {
+    display: -webkit-box;
   }
 
-  @keyframes popIn {
-    from {
-      opacity: 0;
-      transform: scale(0.85) translateY(12px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-  }
-
-  .scenario-caption {
-    text-align: center;
-    color: var(--muted);
-    font-size: 16px;
-    margin: 0;
-    font-weight: 500;
-  }
-
-  /* Infrastructure Section */
-  .infrastructure-section {
+  /* Agent Box - Fixed Size */
+  .agent-box {
+    width: 140px;
+    height: 180px;
     display: flex;
     flex-direction: column;
-    gap: 48px;
-  }
-
-  .pipeline-flow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .pipeline-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 32px 40px;
     border: 2px solid var(--border-bright);
     background: var(--box-bg);
-    min-width: 180px;
+    border-radius: 0;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    overflow: hidden;
   }
 
-  .pipeline-step:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  .agent-box.highlight {
+    border-color: var(--border-bright);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .pipeline-step.highlighted {
-    border-color: var(--accent);
-    background: var(--accent-bg);
-    box-shadow: 0 0 40px rgba(0, 229, 255, 0.4), 0 4px 20px rgba(0, 229, 255, 0.2);
+  .agent-box.grayed {
+    opacity: 0.4;
+    filter: grayscale(0.5);
   }
 
-  .pipeline-step.highlighted:hover {
-    box-shadow: 0 0 50px rgba(0, 229, 255, 0.5), 0 8px 24px rgba(0, 229, 255, 0.3);
-  }
-
-  .pipeline-step span {
-    font-size: 15px;
+  .agent-label {
+    padding: 8px 14px;
+    background: var(--border);
+    border-bottom: 1px solid var(--border-bright);
+    font-size: 12px;
     font-weight: 700;
     color: var(--fg);
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     font-family: 'Space Grotesk', monospace;
+    flex-shrink: 0;
+  }
+
+  .agent-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .agent-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .agent-label-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .agent-label-item span {
+    font-size: 9px;
+    color: var(--muted);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-  }
-
-  .pipeline-step.highlighted span {
-    color: var(--accent);
-  }
-
-  .pipeline-icon {
-    width: 56px;
-    height: 56px;
-    display: grid;
-    place-items: center;
-    color: var(--muted);
+    font-family: 'Space Grotesk', monospace;
     transition: all 0.3s ease;
   }
 
-  .pipeline-step.highlighted .pipeline-icon {
+  .agent-label-item#agent-prompt-label.glow span {
+    color: #00e5ff;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  }
+
+  /* Vertical Arrows Container */
+  .vertical-arrows-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    height: 60px;
+    position: relative;
+    width: 100%;
+    max-width: calc(280px + 16px + 40px + 16px + 280px + 16px + 40px + 16px + 140px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Arrow from Sandbox (center bottom) to Evals */
+  .arrow-vertical-down {
+    position: absolute;
+    left: calc((280px / 2) - 1px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .arrow-vertical-down .arrow-line {
+    width: 2px;
+    height: 50px;
+    background: var(--muted);
+    transition: all 0.3s ease;
+  }
+
+  .arrow-vertical-down.highlight .arrow-line {
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  }
+
+  .arrow-vertical-down .arrow-head {
+    width: 0;
+    height: 0;
+    border-top: 8px solid var(--muted);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .arrow-vertical-down.highlight .arrow-head {
+    border-top-color: var(--accent);
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.8));
+  }
+
+  /* Arrow from Evals to Agent (center bottom of agent) */
+  .arrow-vertical-up {
+    position: absolute;
+    right: calc((140px / 2) - 1px);
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+  }
+
+  .arrow-vertical-up.highlight {
+    opacity: 1;
+  }
+
+  .arrow-vertical-up .arrow-head {
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid var(--accent);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .arrow-vertical-up.highlight .arrow-head {
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.8));
+  }
+
+  .arrow-vertical-up .arrow-line {
+    width: 2px;
+    height: 50px;
+    background: var(--accent);
+    transition: all 0.3s ease;
+  }
+
+  .arrow-vertical-up.highlight .arrow-line {
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  }
+
+  .optimize-label {
+    position: absolute;
+    right: calc((140px / 2) + 15px);
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
     color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Space Grotesk', monospace;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
-  /* Animated Icons */
-  .code-icon {
-    animation: pulse 2s ease-in-out infinite;
+  /* Bottom Row: Playgent Evals */
+  .bottom-row {
+    width: 100%;
+    max-width: calc(280px + 16px + 40px + 16px + 280px + 16px + 40px + 16px + 140px);
+    margin: 0 auto;
   }
 
-  .test-icon {
-    animation: bounce 2s ease-in-out infinite;
+  /* Playgent Evals Box */
+  .evals-box {
+    width: 100%;
+    border: 2px solid var(--accent);
+    background: var(--box-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0.3;
   }
 
-  .deploy-icon {
-    animation: rotate 3s linear infinite;
+  .evals-box.show {
+    opacity: 1;
   }
 
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
+  .evals-box.highlight {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
   }
 
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
+  .spinner {
+    animation: spin 1s linear infinite;
   }
 
-  @keyframes rotate {
+  @keyframes spin {
     from {
       transform: rotate(0deg);
     }
@@ -774,38 +1175,184 @@ import Cubes from "../components/Cubes.tsx";
     }
   }
 
-  /* Pipeline Arrows */
-  .pipeline-arrow-wrapper {
+  .evals-header {
+    padding: 10px 16px;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 229, 255, 0.05) 100%);
+    border-bottom: 1px solid var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Space Grotesk', monospace;
+    text-align: center;
+  }
+
+  .evals-content {
+    padding: 16px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-badge.passed {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 2px solid #22c55e;
+  }
+
+  .status-badge.failed {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 2px solid #ef4444;
+  }
+
+  .evals-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .evals-top-row {
     display: flex;
     align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  .evals-scores {
+    display: flex;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .evals-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .evals-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  .evals-section-content {
+    font-size: 12px;
+    color: var(--fg);
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  .score-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 70px;
+  }
+
+  .score-label {
+    font-size: 9px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  .score-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  /* FAQ Section */
+  .faq-container {
+    display: flex;
+    flex-direction: column;
     gap: 0;
-  }
-
-  .pipeline-arrow-wrapper .arrow-line {
-    width: 50px;
-    height: 2px;
-    background: var(--border-bright);
-  }
-
-  .pipeline-arrow-wrapper .arrow-head {
-    width: 0;
-    height: 0;
-    border-left: 8px solid var(--border-bright);
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-  }
-
-  .infrastructure-preview {
-    border: 1px solid var(--border-bright);
-    overflow: hidden;
-    background: var(--box-bg);
-  }
-
-  .infrastructure-preview img {
     width: 100%;
-    height: auto;
-    display: block;
-    transition: opacity 0.3s ease;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--fg);
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.2s ease;
+  }
+
+  .faq-question:hover {
+    color: var(--accent);
+  }
+
+  .faq-question span {
+    flex: 1;
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 500px;
+  }
+
+  .faq-answer p {
+    padding: 0 0 24px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
   }
 
   .cta-button {
@@ -845,18 +1392,84 @@ import Cubes from "../components/Cubes.tsx";
   }
 
   @media (max-width: 968px) {
-    #hero > .container > div {
-      grid-template-columns: 1fr !important;
+    .hero-box {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 48px 32px;
     }
   }
 
+  /* Desktop only elements */
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
   @media (max-width: 768px) {
+    /* Hide desktop-only elements on mobile */
+    .desktop-only {
+      display: none !important;
+    }
+
+    .mobile-only {
+      display: block !important;
+    }
+
     #hero {
-      padding-top: 120px !important;
+      padding-top: 80px !important;
+    }
+
+    .hero-box {
+      padding: 32px 20px;
+      gap: 24px;
+      border-left: none;
+      border-right: none;
+    }
+
+    .hero-box::before,
+    .hero-box::after {
+      display: none;
+    }
+
+    .hero-box h1 {
+      font-size: 28px;
+    }
+
+    .how-box {
+      border-left: none !important;
+      border-right: none !important;
     }
     
     .step-item {
-      padding: 40px 32px;
+      padding: 24px 16px;
+      border-bottom: none;
+    }
+
+    .step-item::before,
+    .step-item::after {
+      display: none !important;
+    }
+
+    /* Step cards for mobile */
+    .step-cards {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .step-card {
+      padding: 20px;
+    }
+
+    .step-title {
+      font-size: 14px;
+    }
+
+    .step-description {
+      font-size: 13px;
     }
 
     .cta-button {
@@ -869,21 +1482,48 @@ import Cubes from "../components/Cubes.tsx";
     }
 
     .scenario-animation {
-      padding: 32px 24px;
+      padding: 16px;
     }
 
-    .scenario-flow {
-      flex-direction: column;
-      gap: 16px;
+    .top-row {
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .scenario-box {
-      min-width: 100%;
-      max-width: 100%;
+    .sandbox-box {
+      width: 100%;
+      max-width: 280px;
     }
 
-    .flow-arrow {
+    .input-output-box {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .agent-box {
+      width: 100%;
+      max-width: 140px;
+    }
+
+    .arrow-horizontal {
       transform: rotate(90deg);
+      margin: 8px 0;
+    }
+
+    .vertical-arrows-container {
+      flex-direction: column;
+      height: auto;
+      gap: 20px;
+    }
+
+    .arrow-vertical-down {
+      position: relative;
+      left: auto;
+    }
+
+    .arrow-vertical-up {
+      position: relative;
+      right: auto;
     }
 
     .outcome-arrows {
@@ -897,16 +1537,51 @@ import Cubes from "../components/Cubes.tsx";
       transform: rotate(90deg);
     }
 
-    .pipeline-flow {
-      flex-direction: column;
+    /* FAQ Mobile Styles */
+    .faq-question {
+      padding: 16px 0;
+      font-size: 15px;
     }
 
-    .pipeline-arrow-wrapper {
-      transform: rotate(90deg);
+    .faq-answer p {
+      padding: 0 0 16px;
+      font-size: 14px;
     }
 
-    .pipeline-step {
-      min-width: 100%;
+    /* Profile Carousel Mobile Styles */
+    .profile-carousel {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      height: 200px;
+    }
+
+    .profile-card {
+      width: 220px;
+      padding: 20px;
+    }
+
+    .profile-card[data-position="left"] {
+      transform: translateX(-120%) scale(0.75);
+    }
+
+    .profile-card[data-position="right"] {
+      transform: translateX(120%) scale(0.75);
+    }
+
+    .profile-avatar {
+      width: 48px;
+      height: 48px;
+    }
+
+    .profile-name {
+      font-size: 16px;
+    }
+
+    .profile-desc {
+      font-size: 13px;
     }
   }
 </style>
@@ -956,142 +1631,654 @@ import Cubes from "../components/Cubes.tsx";
     setTimeout(type, 500);
   }
 
-  // Scenario Animation
-  const scenarios = [
-    { text: "Fetch all risk reports and summarize the main points", success: true },
-    { text: "Cancel my subscription and process refund", success: false, failures: ["Refund API timeout", "Missing cancellation reason"] },
-    { text: "Book a flight from NYC to London for next Tuesday", success: true },
-    { text: "Generate quarterly financial report with charts", success: false, failures: ["Data access denied", "Chart rendering failed", "Invalid date range"] },
-    { text: "Update user preferences for notification settings", success: true },
-    { text: "Process payment for order #12345", success: false, failures: ["Payment gateway error", "Insufficient balance check failed"] },
-    { text: "Schedule a meeting with the engineering team", success: true },
-    { text: "Export user data in CSV format", success: false, failures: ["Memory limit exceeded", "Missing required fields"] },
-    { text: "Search for available hotel rooms in Paris", success: true },
-    { text: "Send password reset email to user", success: true }
-  ];
+  // Example Configurations
+  const exampleConfigs = {
+    'coding': {
+      userName: 'Alex',
+      integrations: ['github', 'jira', 'linear'],
+      scenarios: [
+        {
+          input: "Create a new branch for the authentication feature",
+          response: null,
+          toolCall: "call github_create_branch",
+          integration: "github",
+          passed: true,
+          graderRationale: "The agent successfully created a new branch with the correct naming convention and base branch.",
+          scores: { correctness: 0.96, clarity: 0.92, completeness: 0.94 }
+        },
+        {
+          input: "Update the Jira ticket status to In Progress",
+          response: null,
+          toolCall: "call jira_update_status",
+          integration: "jira",
+          passed: true,
+          graderRationale: "The agent correctly updated the ticket status and added appropriate comments.",
+          scores: { correctness: 0.94, clarity: 0.90, completeness: 0.92 }
+        },
+        {
+          input: "Create a Linear issue for the bug in login flow",
+          response: null,
+          toolCall: "call linear_create_issue",
+          integration: "linear",
+          passed: false,
+          graderRationale: "The agent failed to include all required fields in the issue description, missing reproduction steps.",
+          scores: { correctness: 0.68, clarity: 0.72, completeness: 0.65 }
+        }
+      ]
+    },
+    'customer-support': {
+      userName: 'Sandra',
+      integrations: ['zendesk', 'slack', 'gmail'],
+      scenarios: [
+        {
+          input: "Check the status of ticket #1234",
+          response: null,
+          toolCall: "call zendesk_get_ticket",
+          integration: "zendesk",
+          passed: true,
+          graderRationale: "The agent retrieved the ticket details and provided a clear summary of the current status.",
+          scores: { correctness: 0.95, clarity: 0.93, completeness: 0.91 }
+        },
+        {
+          input: "Send an update to the customer via email",
+          response: null,
+          toolCall: "call gmail_send",
+          integration: "gmail",
+          passed: true,
+          graderRationale: "The agent composed a professional email with all necessary information and proper tone.",
+          scores: { correctness: 0.92, clarity: 0.94, completeness: 0.90 }
+        },
+        {
+          input: "Notify the support team about the escalation",
+          response: null,
+          toolCall: "call slack_send_message",
+          integration: "slack",
+          passed: false,
+          graderRationale: "The agent failed to tag the correct team members and omitted critical context about the issue.",
+          scores: { correctness: 0.65, clarity: 0.70, completeness: 0.62 }
+        }
+      ]
+    },
+    'accounting': {
+      userName: 'Michael',
+      integrations: ['quickbooks', 'stripe', 'gmail'],
+      scenarios: [
+        {
+          input: "Generate an invoice for client ABC Corp",
+          response: null,
+          toolCall: "call quickbooks_create_invoice",
+          integration: "quickbooks",
+          passed: true,
+          graderRationale: "The agent created an accurate invoice with correct line items and payment terms.",
+          scores: { correctness: 0.97, clarity: 0.91, completeness: 0.95 }
+        },
+        {
+          input: "Check the status of the latest Stripe payment",
+          response: null,
+          toolCall: "call stripe_get_payment",
+          integration: "stripe",
+          passed: true,
+          graderRationale: "The agent retrieved the payment details and correctly identified the transaction status.",
+          scores: { correctness: 0.93, clarity: 0.89, completeness: 0.90 }
+        },
+        {
+          input: "Send the monthly financial report to the CFO",
+          response: null,
+          toolCall: "call gmail_send",
+          integration: "gmail",
+          passed: false,
+          graderRationale: "The agent failed to attach the report and sent an incomplete email.",
+          scores: { correctness: 0.60, clarity: 0.75, completeness: 0.58 }
+        }
+      ]
+    }
+  };
+
+  let currentExample = 'customer-support';
+  let currentScenarios = exampleConfigs[currentExample as keyof typeof exampleConfigs].scenarios;
+
+  function updateIntegrations(example: string) {
+    const integrationsContainer = document.getElementById('integrations-container');
+    const userName = document.getElementById('user-name');
+    const userIcon = document.getElementById('sandbox-user-icon') as HTMLImageElement;
+    
+    const config = exampleConfigs[example as keyof typeof exampleConfigs];
+    if (!config) return;
+    
+    // Update user name and icon
+    if (userName) {
+      userName.textContent = config.userName;
+    }
+    if (userIcon) {
+      userIcon.src = `/${config.userName.toLowerCase()}-icon.png`;
+    }
+    
+    // Update integrations
+    if (integrationsContainer) {
+      const integrations = config.integrations;
+      integrationsContainer.innerHTML = '';
+      
+      integrations.forEach((integration: string) => {
+        const img = document.createElement('img');
+        img.src = `/${integration}-icon.png`;
+        img.width = 40;
+        img.height = 40;
+        img.classList.add('integration-item');
+        img.setAttribute('data-integration', integration);
+        img.id = `integration-${integration}`;
+        img.alt = integration;
+        
+        integrationsContainer.appendChild(img);
+      });
+    }
+  }
+
+  let animationInterval: any;
+  let animationTimeouts: any[] = [];
+
+  let currentAnimationStep = 0;
+  let currentScenarioIndex = 0;
+
+  function updatePaginationDots(step: number) {
+    const dots = document.querySelectorAll('.pagination-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.remove('active', 'completed');
+      if (index < step) {
+        dot.classList.add('completed');
+      } else if (index === step) {
+        dot.classList.add('active');
+      }
+    });
+  }
 
   function initScenarioAnimation() {
-    const scenarioBox = document.getElementById('scenario-box');
-    const scenarioText = scenarioBox?.querySelector('.scenario-text');
-    const successBranch = document.getElementById('success-branch');
-    const failureBranch = document.getElementById('failure-branch');
-    const failureCasesContainer = document.getElementById('failure-cases');
-    const infrastructureImg = document.querySelector('#infrastructure-preview img');
+    const sandboxBox = document.getElementById('sandbox-box');
+    const scenarioInputBox = document.getElementById('scenario-input-box');
+    const scenarioInputText = document.getElementById('scenario-input-text');
+    const agentResponseBox = document.getElementById('agent-response-box');
+    const agentResponseText = document.getElementById('agent-response-text');
+    const agentToolCall = document.getElementById('agent-tool-call');
+    const agentBox = document.getElementById('agent-box');
+    const evalsBox = document.getElementById('evals-box');
+    const statusBadge = document.getElementById('status-badge');
+    const graderRationale = document.getElementById('grader-rationale');
+    const scoreCorrectness = document.getElementById('score-correctness');
+    const scoreClarity = document.getElementById('score-clarity');
+    const scoreCompleteness = document.getElementById('score-completeness');
+    const arrowSandboxToEvals = document.getElementById('arrow-sandbox-to-evals');
+    const arrowEvalsToAgent = document.getElementById('arrow-evals-to-agent');
+    const arrowInputForward = document.getElementById('arrow-input-forward');
+    const arrowAgentForward = document.getElementById('arrow-agent-forward');
+    const arrowOutputReverse = document.getElementById('arrow-output-reverse');
+    const arrowAgentReverse = document.getElementById('arrow-agent-reverse');
+    const optimizeLabel = document.getElementById('optimize-label');
 
-    if (!scenarioBox || !scenarioText || !successBranch || !failureBranch || !failureCasesContainer) return;
+    if (!sandboxBox || !scenarioInputBox || !scenarioInputText || !agentResponseBox || 
+        !agentResponseText || !agentToolCall || !agentBox || !evalsBox || 
+        !statusBadge || !graderRationale || !scoreCorrectness || !scoreClarity || 
+        !scoreCompleteness || !arrowSandboxToEvals || !arrowEvalsToAgent) return;
 
     let currentIndex = 0;
+    let currentStep = 0;
 
-    // Update theme-based image
-    function updateInfrastructureImage() {
-      if (!infrastructureImg || !(infrastructureImg instanceof HTMLImageElement)) return;
-      const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-      infrastructureImg.src = theme === 'dark' ? '/incidentdark.png' : '/incidents.png';
+    function resetHighlights() {
+      // Reset all highlights
+      if (sandboxBox) {
+        sandboxBox.classList.remove('highlight');
+        sandboxBox.classList.remove('grayed');
+      }
+      if (scenarioInputBox) {
+        scenarioInputBox.classList.remove('highlight');
+        scenarioInputBox.classList.remove('grayed');
+      }
+      if (agentResponseBox) {
+        agentResponseBox.classList.remove('highlight');
+        agentResponseBox.classList.remove('grayed');
+      }
+      if (agentBox) {
+        agentBox.classList.remove('highlight');
+        agentBox.classList.remove('grayed');
+      }
+      if (evalsBox) {
+        evalsBox.classList.remove('highlight');
+        evalsBox.classList.remove('show');
+      }
+      document.querySelectorAll('.integration-item').forEach(item => {
+        item.classList.remove('highlight');
+        (item as HTMLElement).style.cssText = '';
+      });
+      if (agentResponseText) agentResponseText.textContent = '';
+      if (agentToolCall) {
+        agentToolCall.textContent = '';
+        agentToolCall.classList.remove('show');
+      }
+      if (arrowSandboxToEvals) arrowSandboxToEvals.classList.remove('highlight');
+      if (arrowEvalsToAgent) arrowEvalsToAgent.classList.remove('highlight');
+      if (arrowInputForward) arrowInputForward.classList.remove('highlight');
+      if (arrowAgentForward) arrowAgentForward.classList.remove('highlight');
+      if (arrowOutputReverse) arrowOutputReverse.classList.remove('highlight');
+      if (arrowAgentReverse) arrowAgentReverse.classList.remove('highlight');
+      if (optimizeLabel) optimizeLabel.style.opacity = '0';
+      const promptLabel = document.getElementById('agent-prompt-label');
+      if (promptLabel) promptLabel.classList.remove('glow');
     }
-
-    updateInfrastructureImage();
-    const observer = new MutationObserver(updateInfrastructureImage);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
 
     function cycleScenario() {
-      if (!scenarioBox || !scenarioText || !successBranch || !failureBranch || !failureCasesContainer) return;
+      if (currentIndex >= currentScenarios.length) {
+        currentIndex = 0;
+      }
       
-      const scenario = scenarios[currentIndex];
-      
-      // Fade out current state
-      scenarioBox.style.opacity = '0.5';
-      
-      setTimeout(() => {
-        // Reset states
-        successBranch.classList.remove('active');
-        failureBranch.classList.remove('active');
-        failureCasesContainer.innerHTML = '';
+      currentScenarioIndex = currentIndex;
+      const scenario = currentScenarios[currentIndex];
+      resetHighlights();
 
-        // Update scenario text
-        scenarioText.textContent = scenario.text;
+      // Step 1: Show scenario input (4 seconds)
+      // Active: Sandbox, Input, Agent
+      // Grayed: Output
+      currentStep = 1;
+      currentAnimationStep = 0;
+      updatePaginationDots(0);
+      if (scenarioInputText) scenarioInputText.textContent = scenario.input;
+      if (sandboxBox) sandboxBox.classList.add('highlight');
+      if (scenarioInputBox) scenarioInputBox.classList.add('highlight');
+      if (agentBox) agentBox.classList.add('highlight');
+      if (agentResponseBox) agentResponseBox.classList.add('grayed');
+      // Highlight forward path: Sandbox -> Input -> Agent
+      if (arrowInputForward) arrowInputForward.classList.add('highlight');
+      if (arrowAgentForward) arrowAgentForward.classList.add('highlight');
+      
+      const timeout1 = setTimeout(() => {
+        resetHighlights();
         
-        // Fade in
-        scenarioBox.style.opacity = '1';
+        // Step 2: Show agent response/tool call (4 seconds)
+        // Active: Sandbox, Output, Agent
+        // Grayed: Input
+        currentStep = 2;
+        currentAnimationStep = 1;
+        updatePaginationDots(1);
+        if (sandboxBox) sandboxBox.classList.add('highlight');
+        if (agentBox) agentBox.classList.add('highlight');
+        if (agentResponseBox) agentResponseBox.classList.add('highlight');
+        if (scenarioInputBox) scenarioInputBox.classList.add('grayed');
+        
+        if (scenario.toolCall && agentToolCall) {
+          agentToolCall.textContent = scenario.toolCall;
+          agentToolCall.classList.add('show');
 
-        // Wait a bit then show outcome
-        setTimeout(() => {
-          if (!scenarioBox || !successBranch || !failureBranch || !failureCasesContainer) return;
-          
-          if (scenario.success) {
-            successBranch.classList.add('active');
-          } else {
-            failureBranch.classList.add('active');
-            
-            // Add failure cases one by one
-            if (scenario.failures) {
-              scenario.failures.forEach((failure, index) => {
-                setTimeout(() => {
-                  if (!failureCasesContainer) return;
-                  
-                  const badge = document.createElement('div');
-                  badge.style.cssText = `
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 10px;
-                    padding: 12px 18px;
-                    background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.08) 100%);
-                    border: 2px solid #ef4444;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
-                    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                    margin: 0 8px 8px 0;
-                  `;
-                  
-                  badge.innerHTML = `
-                    <span style="
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      width: 22px;
-                      height: 22px;
-                      background: #ef4444;
-                      color: white;
-                      font-size: 13px;
-                      font-weight: 700;
-                      border-radius: 50%;
-                      flex-shrink: 0;
-                    ">✕</span>
-                    <span style="
-                      font-size: 14px;
-                      font-weight: 600;
-                      color: #ef4444;
-                      font-family: 'Space Grotesk', monospace;
-                    ">${failure}</span>
-                  `;
-                  
-                  failureCasesContainer.appendChild(badge);
-                }, index * 250);
-              });
+          // Highlight the relevant integration when tool call is made
+        if (scenario.integration) {
+            const integrationEl = document.getElementById(`integration-${scenario.integration}`);
+            if (integrationEl) {
+              integrationEl.classList.add('highlight');
+              (integrationEl as HTMLElement).style.boxShadow = '0 0 20px #00e5ff, 0 0 40px rgba(0, 229, 255, 0.6)';
+              (integrationEl as HTMLElement).style.transform = 'scale(1.15)';
+              (integrationEl as HTMLElement).style.opacity = '1';
             }
           }
-        }, 400);
-      }, 200);
+        } else if (scenario.response && agentResponseText) {
+          agentResponseText.textContent = scenario.response;
+        }
 
-      // Move to next scenario
-      currentIndex = (currentIndex + 1) % scenarios.length;
+        // Highlight reverse path: Sandbox <- Output <- Agent
+        if (arrowOutputReverse) arrowOutputReverse.classList.add('highlight');
+        if (arrowAgentReverse) arrowAgentReverse.classList.add('highlight');
+
+        const timeout2 = setTimeout(() => {
+          resetHighlights();
+          
+          // Step 3: Show Playgent Evals (4 seconds)
+          // Active: Evals only
+          // Grayed: Sandbox, Input, Output, Agent
+          currentStep = 3;
+          currentAnimationStep = 2;
+          updatePaginationDots(2);
+          if (sandboxBox) sandboxBox.classList.add('grayed');
+          if (scenarioInputBox) scenarioInputBox.classList.add('grayed');
+          if (agentResponseBox) agentResponseBox.classList.add('grayed');
+          if (agentBox) agentBox.classList.add('grayed');
+          if (evalsBox) {
+            evalsBox.classList.add('show');
+            evalsBox.classList.add('highlight');
+          }
+          if (arrowSandboxToEvals) arrowSandboxToEvals.classList.add('highlight');
+          
+          // Update evals content
+          if (statusBadge) {
+            statusBadge.className = `status-badge ${scenario.passed ? 'passed' : 'failed'}`;
+            if (scenario.passed) {
+              statusBadge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Passed</span>';
+          } else {
+              statusBadge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Failed</span>';
+            }
+          }
+          if (graderRationale) graderRationale.textContent = scenario.graderRationale;
+          if (scoreCorrectness) scoreCorrectness.textContent = scenario.scores.correctness.toFixed(2);
+          if (scoreClarity) scoreClarity.textContent = scenario.scores.clarity.toFixed(2);
+          if (scoreCompleteness) scoreCompleteness.textContent = scenario.scores.completeness.toFixed(2);
+
+          const timeout3 = setTimeout(() => {
+            resetHighlights();
+            
+            // Step 4: Show optimize prompt arrow (4 seconds)
+            // Active: Agent only
+            // Grayed: Sandbox, Input, Output
+            currentStep = 4;
+            currentAnimationStep = 3;
+            updatePaginationDots(3);
+            if (sandboxBox) sandboxBox.classList.add('grayed');
+            if (scenarioInputBox) scenarioInputBox.classList.add('grayed');
+            if (agentResponseBox) agentResponseBox.classList.add('grayed');
+            if (agentBox) agentBox.classList.add('highlight');
+            if (arrowEvalsToAgent) arrowEvalsToAgent.classList.add('highlight');
+            if (optimizeLabel) optimizeLabel.style.opacity = '1';
+            const promptLabel = document.getElementById('agent-prompt-label');
+            if (promptLabel) promptLabel.classList.add('glow');
+
+            const timeout4 = setTimeout(() => {
+              resetHighlights();
+              if (optimizeLabel) optimizeLabel.style.opacity = '0';
+              
+              // Move to next scenario and repeat
+              currentIndex++;
+              const timeout5 = setTimeout(cycleScenario, 500);
+              animationTimeouts.push(timeout5);
+            }, 4000);
+            animationTimeouts.push(timeout4);
+          }, 4000);
+          animationTimeouts.push(timeout3);
+        }, 4000);
+        animationTimeouts.push(timeout2);
+      }, 4000);
+      animationTimeouts.push(timeout1);
     }
 
-    // Start cycling
+    // Start the cycle
+    currentIndex = 0;
     cycleScenario();
-    setInterval(cycleScenario, 3500);
+  }
+
+  // Carousel state
+  let carouselIndex = 1; // Start with Sandra (customer-support)
+  const carouselOrder = ['coding', 'customer-support', 'accounting'];
+
+  const carouselDescriptions: Record<string, string> = {
+    'coding': 'Alex is a fake software engineer at Acme corp using agents to manage code and track issues.',
+    'customer-support': 'Sarah is a fake customer support member at Acme corp using agents to manage customer support tickets.',
+    'accounting': 'Michael is a fake finance manager at Acme corp using agents to manage invoices and payments.'
+  };
+
+  function updateCarouselPositions(centerIndex: number) {
+    const cards = document.querySelectorAll('.profile-card');
+    const total = cards.length;
+    
+    cards.forEach((card) => {
+      const cardIndex = parseInt(card.getAttribute('data-index') || '0');
+      
+      // Calculate relative position
+      let diff = cardIndex - centerIndex;
+      
+      // Handle wrap-around for smooth cycling
+      if (diff > 1) diff -= total;
+      if (diff < -1) diff += total;
+      
+      if (diff === 0) {
+        card.setAttribute('data-position', 'center');
+        // Update description text
+        const example = card.getAttribute('data-example') || '';
+        const descEl = document.getElementById('carousel-description');
+        if (descEl && carouselDescriptions[example]) {
+          descEl.textContent = carouselDescriptions[example];
+        }
+      } else if (diff === -1 || diff === total - 1) {
+        card.setAttribute('data-position', 'left');
+      } else {
+        card.setAttribute('data-position', 'right');
+      }
+    });
+  }
+
+  // Profile Card Handlers
+  function initExampleButtons() {
+    const profileCards = document.querySelectorAll('.profile-card');
+    
+    // Initialize positions with Sandra (index 1) as default
+    updateCarouselPositions(1);
+    
+    profileCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const clickedIndex = parseInt(card.getAttribute('data-index') || '0');
+        
+        // If already center, do nothing
+        if (clickedIndex === carouselIndex) return;
+        
+        // Clear all animation timeouts
+        animationTimeouts.forEach(timeout => clearTimeout(timeout));
+        animationTimeouts = [];
+        
+        // Update carousel
+        carouselIndex = clickedIndex;
+        updateCarouselPositions(carouselIndex);
+        
+        // Update current example
+        currentExample = card.getAttribute('data-example') || 'coding';
+        const config = exampleConfigs[currentExample as keyof typeof exampleConfigs];
+        if (config) {
+          currentScenarios = config.scenarios;
+        }
+        
+        // Reset scenario index and pagination
+        currentScenarioIndex = 0;
+        updatePaginationDots(0);
+        
+        // Update integrations and user
+        updateIntegrations(currentExample);
+        
+        // Restart animation from beginning
+        initScenarioAnimation();
+      });
+    });
+  }
+
+  // Pagination Dot Click Handlers
+  function initPaginationDots() {
+    const dots = document.querySelectorAll('.pagination-dot');
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        // Clear all animation timeouts
+        animationTimeouts.forEach(timeout => clearTimeout(timeout));
+        animationTimeouts = [];
+        
+        // Jump to the selected step
+        jumpToStep(index);
+      });
+    });
+  }
+
+  function jumpToStep(step: number) {
+    const sandboxBox = document.getElementById('sandbox-box');
+    const scenarioInputBox = document.getElementById('scenario-input-box');
+    const scenarioInputText = document.getElementById('scenario-input-text');
+    const agentResponseBox = document.getElementById('agent-response-box');
+    const agentResponseText = document.getElementById('agent-response-text');
+    const agentToolCall = document.getElementById('agent-tool-call');
+    const agentBox = document.getElementById('agent-box');
+    const evalsBox = document.getElementById('evals-box');
+    const statusBadge = document.getElementById('status-badge');
+    const graderRationale = document.getElementById('grader-rationale');
+    const scoreCorrectness = document.getElementById('score-correctness');
+    const scoreClarity = document.getElementById('score-clarity');
+    const scoreCompleteness = document.getElementById('score-completeness');
+    const arrowSandboxToEvals = document.getElementById('arrow-sandbox-to-evals');
+    const arrowEvalsToAgent = document.getElementById('arrow-evals-to-agent');
+    const arrowInputForward = document.getElementById('arrow-input-forward');
+    const arrowAgentForward = document.getElementById('arrow-agent-forward');
+    const arrowOutputReverse = document.getElementById('arrow-output-reverse');
+    const arrowAgentReverse = document.getElementById('arrow-agent-reverse');
+    const optimizeLabel = document.getElementById('optimize-label');
+
+    if (!sandboxBox || !scenarioInputBox || !scenarioInputText || !agentResponseBox || 
+        !agentResponseText || !agentToolCall || !agentBox || !evalsBox || 
+        !statusBadge || !graderRationale || !scoreCorrectness || !scoreClarity || 
+        !scoreCompleteness) return;
+
+    const scenario = currentScenarios[currentScenarioIndex];
+
+    // Reset all highlights
+    sandboxBox.classList.remove('highlight', 'grayed');
+    scenarioInputBox.classList.remove('highlight', 'grayed');
+    agentResponseBox.classList.remove('highlight', 'grayed');
+    agentBox.classList.remove('highlight', 'grayed');
+    evalsBox.classList.remove('highlight', 'show');
+    document.querySelectorAll('.integration-item').forEach(item => {
+      item.classList.remove('highlight');
+      (item as HTMLElement).style.cssText = '';
+    });
+    agentResponseText.textContent = '';
+    agentToolCall.textContent = '';
+    agentToolCall.classList.remove('show');
+    if (arrowSandboxToEvals) arrowSandboxToEvals.classList.remove('highlight');
+    if (arrowEvalsToAgent) arrowEvalsToAgent.classList.remove('highlight');
+    if (arrowInputForward) arrowInputForward.classList.remove('highlight');
+    if (arrowAgentForward) arrowAgentForward.classList.remove('highlight');
+    if (arrowOutputReverse) arrowOutputReverse.classList.remove('highlight');
+    if (arrowAgentReverse) arrowAgentReverse.classList.remove('highlight');
+    if (optimizeLabel) optimizeLabel.style.opacity = '0';
+    const promptLabel = document.getElementById('agent-prompt-label');
+    if (promptLabel) promptLabel.classList.remove('glow');
+
+    // Update pagination
+    currentAnimationStep = step;
+    updatePaginationDots(step);
+
+    // Apply the state for the selected step
+    if (step === 0) {
+      // Step 1: Input
+      scenarioInputText.textContent = scenario.input;
+      sandboxBox.classList.add('highlight');
+      scenarioInputBox.classList.add('highlight');
+      agentBox.classList.add('highlight');
+      agentResponseBox.classList.add('grayed');
+      if (arrowInputForward) arrowInputForward.classList.add('highlight');
+      if (arrowAgentForward) arrowAgentForward.classList.add('highlight');
+    } else if (step === 1) {
+      // Step 2: Output/Tool Call
+      scenarioInputText.textContent = scenario.input;
+      sandboxBox.classList.add('highlight');
+      agentBox.classList.add('highlight');
+      agentResponseBox.classList.add('highlight');
+      scenarioInputBox.classList.add('grayed');
+      if (scenario.toolCall) {
+        agentToolCall.textContent = scenario.toolCall;
+        agentToolCall.classList.add('show');
+        
+        // Highlight the relevant integration when tool call is made
+        if (scenario.integration) {
+          const integrationEl = document.getElementById(`integration-${scenario.integration}`);
+          if (integrationEl) {
+            integrationEl.classList.add('highlight');
+            (integrationEl as HTMLElement).style.boxShadow = '0 0 20px #00e5ff, 0 0 40px rgba(0, 229, 255, 0.6)';
+            (integrationEl as HTMLElement).style.transform = 'scale(1.15)';
+            (integrationEl as HTMLElement).style.opacity = '1';
+          }
+        }
+      }
+      if (arrowOutputReverse) arrowOutputReverse.classList.add('highlight');
+      if (arrowAgentReverse) arrowAgentReverse.classList.add('highlight');
+    } else if (step === 2) {
+      // Step 3: Evals
+      scenarioInputText.textContent = scenario.input;
+      sandboxBox.classList.add('grayed');
+      scenarioInputBox.classList.add('grayed');
+      agentResponseBox.classList.add('grayed');
+      agentBox.classList.add('grayed');
+      evalsBox.classList.add('show', 'highlight');
+      if (arrowSandboxToEvals) arrowSandboxToEvals.classList.add('highlight');
+      statusBadge.className = `status-badge ${scenario.passed ? 'passed' : 'failed'}`;
+      if (scenario.passed) {
+        statusBadge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Passed</span>';
+      } else {
+        statusBadge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Failed</span>';
+      }
+      graderRationale.textContent = scenario.graderRationale;
+      scoreCorrectness.textContent = scenario.scores.correctness.toFixed(2);
+      scoreClarity.textContent = scenario.scores.clarity.toFixed(2);
+      scoreCompleteness.textContent = scenario.scores.completeness.toFixed(2);
+    } else if (step === 3) {
+      // Step 4: Optimize
+      scenarioInputText.textContent = scenario.input;
+      sandboxBox.classList.add('grayed');
+      scenarioInputBox.classList.add('grayed');
+      agentResponseBox.classList.add('grayed');
+      agentBox.classList.add('highlight');
+      if (arrowEvalsToAgent) arrowEvalsToAgent.classList.add('highlight');
+      if (optimizeLabel) optimizeLabel.style.opacity = '1';
+      const promptLabel = document.getElementById('agent-prompt-label');
+      if (promptLabel) promptLabel.classList.add('glow');
+    }
+
+    // Resume animation after 4 seconds
+    const resumeTimeout = setTimeout(() => {
+      continueAnimationFromStep(step);
+    }, 4000);
+    animationTimeouts.push(resumeTimeout);
+  }
+
+  function continueAnimationFromStep(fromStep: number) {
+    // This will continue the animation from the next step
+    if (fromStep < 3) {
+      jumpToStep(fromStep + 1);
+    } else {
+      // Move to next scenario
+      currentScenarioIndex = (currentScenarioIndex + 1) % currentScenarios.length;
+      jumpToStep(0);
+    }
+  }
+
+  // FAQ Accordion
+  function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      if (question) {
+        question.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          
+          // Close all other items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('open');
+              const otherBtn = otherItem.querySelector('.faq-question');
+              if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+          
+          // Toggle current item
+          item.classList.toggle('open');
+          question.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        });
+      }
+    });
   }
 
   // Initialize on load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScenarioAnimation);
-  } else {
+  function init() {
+    initExampleButtons();
+    updateIntegrations(currentExample);
     initScenarioAnimation();
+    initPaginationDots();
+    initFAQ();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 
   // Re-initialize after navigation
-  document.addEventListener('astro:after-swap', initScenarioAnimation);
+  document.addEventListener('astro:after-swap', init);
 </script>
 
