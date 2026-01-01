@@ -4,6 +4,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import Cubes from "../components/Cubes.tsx";
+import DynamicLogoLoop from "../components/DynamicLogoLoop.astro";
+
+const partnerLogos = [
+  { domain: "openai.com", alt: "OpenAI" },
+  { domain: "anthropic.com", alt: "Anthropic" },
+  { domain: "langchain.com", alt: "LangChain" },
+  { domain: "pydantic.ai", alt: "Pydantic AI" },
+  { domain: "crewai.com", alt: "Crew AI" },
+  { domain: "autogenai.com", alt: "Autogen AI" },
+];
 
 ---
 
@@ -23,7 +33,8 @@ import Cubes from "../components/Cubes.tsx";
             <p class="lead" style="margin-bottom:12px;">
               <span id="typed-text"></span><span id="cursor" style="animation:blink 1s infinite;">|</span>
             </p>
-            <p style="color:var(--muted);margin:0;font-size:17px;">We provide everything you need to test AI agents.</p>
+            <p style="color:var(--muted);margin:0 0 32px;font-size:17px;">We provide everything you need to test AI agents.</p>
+            <a href="/waitlist" class="hero-cta-btn">Join Waitlist</a>
           </div>
           <div class="hero-cubes desktop-only">
             <div style="width:70%;max-width:400px;">
@@ -44,11 +55,108 @@ import Cubes from "../components/Cubes.tsx";
       </div>
     </section>
 
+    <!-- Agent Stack Logos -->
+    <div class="container" style="padding:24px 0 16px;">
+      <p style="text-align:center;color:var(--muted);margin-bottom:20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Works with your agent stack</p>
+      <DynamicLogoLoop logos={partnerLogos} speed={30} logoHeight={28} gap={60} />
+    </div>
+
     <!-- How It Works Section -->
     <section id="how" class="section" style="padding-top:40px;">
       <div class="container">
         <div class="how-box" style="border-left:1px solid var(--border);border-right:1px solid var(--border);position:relative;">
           
+          <!-- Section 1: Generate User Environments -->
+          <div class="dev-section">
+            <div class="dev-section-grid">
+              <div class="dev-section-text">
+                <h3 class="dev-section-title">Generate User Environments</h3>
+                <p class="dev-section-desc">Create synthetic users with complete profiles and connected apps. Each environment comes with MCP server URLs that your agent can interact with—no auth setup required.</p>
+              </div>
+              <div class="dev-code-block">
+                <div class="code-header">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                  <span class="code-filename">create_env.py</span>
+                </div>
+                <div class="code-content" id="env-code-content">
+                  <div class="code-line" data-delay="0"><span class="code-var">env</span> <span class="code-op">=</span> <span class="code-module">playgent</span>.<span class="code-fn">create_environment</span>(</div>
+                  <div class="code-line" data-delay="100">    <span class="code-param">identity</span><span class="code-op">=</span><span class="code-string">"Michael, a senior accountant at Acme Corp"</span>,</div>
+                  <div class="code-line" data-delay="200">    <span class="code-param">apps</span><span class="code-op">=</span>[<span class="code-string">"stripe"</span>, <span class="code-string">"gmail"</span>, <span class="code-string">"quickbooks"</span>]</div>
+                  <div class="code-line" data-delay="300">)</div>
+                  <div class="code-line" data-delay="1300"></div>
+                  <div class="code-line" data-delay="1400"><span class="code-fn">print</span>(<span class="code-var">env</span>.<span class="code-prop">url</span>)</div>
+                  <div class="code-line output-line" data-delay="1500"><span class="code-output">https://api.playgent.dev/env/7x9k2</span></div>
+                  <div class="code-line" data-delay="2000"></div>
+                  <div class="code-line" data-delay="2100"><span class="code-fn">print</span>(<span class="code-var">env</span>.<span class="code-prop">mcp</span>[<span class="code-string">"stripe"</span>])</div>
+                  <div class="code-line output-line" data-delay="2200"><span class="code-output">mcp://playgent.dev/stripe/7x9k2</span></div>
+                  <div class="code-line" data-delay="2600"><span class="code-fn">print</span>(<span class="code-var">env</span>.<span class="code-prop">mcp</span>[<span class="code-string">"gmail"</span>])</div>
+                  <div class="code-line output-line" data-delay="2700"><span class="code-output">mcp://playgent.dev/gmail/7x9k2</span></div>
+                  <div class="code-line" data-delay="3100"><span class="code-fn">print</span>(<span class="code-var">env</span>.<span class="code-prop">mcp</span>[<span class="code-string">"quickbooks"</span>])</div>
+                  <div class="code-line output-line" data-delay="3200"><span class="code-output">mcp://playgent.dev/quickbooks/7x9k2</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Simulated Conversations -->
+          <div class="dev-section">
+            <div class="dev-section-header">
+              <h3 class="dev-section-title">Run Simulated Tasks</h3>
+              <p class="dev-section-desc">Define an intent, seed mock data, and let your agent interact with the simulated user through realistic multi-turn conversations.</p>
+            </div>
+            <div class="dev-section-grid-full">
+              <div class="dev-code-block">
+                <div class="code-header">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                  <span class="code-filename">run_task.py</span>
+                </div>
+                <div class="code-content" id="task-code-content">
+                  <div class="code-line" data-delay="0" id="task-line-1"><span class="code-var">task</span> <span class="code-op">=</span> <span class="code-var">env</span>.<span class="code-fn">task</span>(</div>
+                  <div class="code-line" data-delay="50" id="task-line-2">    <span class="code-param">intent</span><span class="code-op">=</span><span class="code-string">"Email an excel report of all Stripe</span></div>
+                  <div class="code-line" data-delay="50" id="task-line-3">            <span class="code-string">invoices from May 2025 to john@gmail.com"</span>,</div>
+                  <div class="code-line" data-delay="100" id="task-line-4">    <span class="code-param">mock_data</span><span class="code-op">=</span>{"{"}</div>
+                  <div class="code-line" data-delay="150" id="task-line-5">        <span class="code-string">"stripe"</span>: <span class="code-string">"Multiple invoices Jan-Sep 2025"</span></div>
+                  <div class="code-line" data-delay="200" id="task-line-6">    {"}"}</div>
+                  <div class="code-line" data-delay="250" id="task-line-7">)</div>
+                  <div class="code-line" data-delay="400"></div>
+                  <div class="code-line" data-delay="500" id="task-line-while"><span class="code-keyword">while</span> <span class="code-keyword">not</span> <span class="code-var">task</span>.<span class="code-fn">finished</span>():</div>
+                  <div class="code-line" data-delay="600" id="task-line-input">    <span class="code-var">input</span> <span class="code-op">=</span> <span class="code-var">task</span>.<span class="code-fn">generate_input</span>()</div>
+                  <div class="code-line" data-delay="700" id="task-line-output-1">    <span class="code-var">output</span> <span class="code-op">=</span> <span class="code-var">client</span>.<span class="code-prop">responses</span>.<span class="code-fn">create</span>(</div>
+                  <div class="code-line" data-delay="750" id="task-line-output-2">        <span class="code-param">input</span><span class="code-op">=</span><span class="code-var">task</span>.<span class="code-fn">state</span>() <span class="code-op">+</span> <span class="code-var">input</span>,</div>
+                  <div class="code-line" data-delay="800" id="task-line-output-3">        <span class="code-param">tools</span><span class="code-op">=</span>[{"{"}<span class="code-string">"type"</span>: <span class="code-string">"mcp"</span>, <span class="code-string">"server_url"</span>: <span class="code-var">env</span>.<span class="code-prop">mcp</span>[<span class="code-string">"gmail"</span>]{"}"}, ...]</div>
+                  <div class="code-line" data-delay="850" id="task-line-output-4">    )</div>
+                  <div class="code-line" data-delay="900" id="task-line-act">    <span class="code-var">env</span>.<span class="code-fn">act</span>(<span class="code-var">output</span>)</div>
+                </div>
+              </div>
+              <div class="console-block">
+                <div class="console-header">
+                  <span class="console-icon">▶</span>
+                  <span class="console-title">Console Output</span>
+                </div>
+                <div class="console-content" id="console-output">
+                  <div class="console-line system" data-delay="0" data-highlight="task-line-1,task-line-2,task-line-3,task-line-4,task-line-5,task-line-6,task-line-7"><span class="console-prefix">⚙</span> Seeding environment with fake data...</div>
+                  <div class="console-line system" data-delay="1000" data-highlight="task-line-1,task-line-2,task-line-3,task-line-4,task-line-5,task-line-6,task-line-7"><span class="console-prefix">✓</span> Created 70 invoices from Jan 1 2025 to Sep 1 2025</div>
+                  <div class="console-line" data-delay="2000"></div>
+                  <div class="console-line user" data-delay="2200" data-highlight="task-line-input"><span class="console-label">Michael</span> Create an earnings report with all invoices from May 2025</div>
+                  <div class="console-line agent" data-delay="3200" data-highlight="task-line-output-1,task-line-output-2,task-line-output-3,task-line-output-4"><span class="console-label">Agent</span> Sure, let me do that for you.</div>
+                  <div class="console-line tool" data-delay="4000" data-highlight="task-line-output-1,task-line-output-2,task-line-output-3,task-line-output-4"><span class="console-prefix">→</span> list_tools <span class="console-url">mcp://playgent.dev/stripe/7x9k2</span></div>
+                  <div class="console-line tool" data-delay="4600" data-highlight="task-line-output-1,task-line-output-2,task-line-output-3,task-line-output-4"><span class="console-prefix">→</span> list_invoices(ending_before="2025-06-01", starting_after="2025-05-01")</div>
+                  <div class="console-line agent" data-delay="5400" data-highlight="task-line-act"><span class="console-label">Agent</span> Got the invoices! Creating an Excel report now...</div>
+                  <div class="console-line file" data-delay="6000" data-highlight="task-line-act"><span class="console-prefix">📎</span> <span class="console-file">report.xlsx</span></div>
+                  <div class="console-line user" data-delay="6800" data-highlight="task-line-input"><span class="console-label">Michael</span> Thanks! Now email this report to john@gmail.com</div>
+                  <div class="console-line agent" data-delay="7800" data-highlight="task-line-output-1,task-line-output-2,task-line-output-3,task-line-output-4"><span class="console-label">Agent</span> Sure, emailing the report now.</div>
+                  <div class="console-line tool" data-delay="8400" data-highlight="task-line-output-1,task-line-output-2,task-line-output-3,task-line-output-4"><span class="console-prefix">→</span> list_tools <span class="console-url">mcp://playgent.dev/gmail/7x9k2</span></div>
+                  <div class="console-line tool" data-delay="9000" data-highlight="task-line-output-1,task-line-output-2,task-line-output-3,task-line-output-4"><span class="console-prefix">→</span> send_email(to="john@gmail.com", body="Please find the report...")</div>
+                  <div class="console-line success" data-delay="9800" data-highlight="task-line-act"><span class="console-prefix">✓</span> Email sent successfully</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Hero: Testing Ecosystem -->
           <div class="desktop-hero-message">
             <div class="hero-message-content">
@@ -58,58 +166,10 @@ import Cubes from "../components/Cubes.tsx";
             </div>
           </div>
 
-          <div class="step-item">
-            <div class="mobile-only" style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-              <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="3" y1="9" x2="21" y2="9"></line>
-                  <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
-              </div>
-              <strong style="font-size:20px;">One platform to test AI agents</strong>
-            </div>
-            <p style="color:var(--muted);margin-bottom:32px;">LLMs generate text, but agents execute actions in complex environments. Testing agents requires a new approach.</p>
-
-            <!-- Step Cards -->
-            <div class="step-cards">
-              <div class="step-card">
-                <div class="step-card-header">
-                  <span class="step-number">1</span>
-                  <span class="step-title">Simulated Environments</span>
-                </div>
-                <p class="step-description">We enable you to create fake users that mimic your real users, along with fake data across all their apps and tools.</p>
-              </div>
-              <div class="step-card">
-                <div class="step-card-header">
-                  <span class="step-number">2</span>
-                  <span class="step-title">Interactive Testing</span>
-                </div>
-                <p class="step-description">Simulated users interact with your agent, and Playgent's suite of 27+ evaluation metrics grade every aspect of agent behavior.</p>
-              </div>
-              <div class="step-card">
-                <div class="step-card-header">
-                  <span class="step-number">3</span>
-                  <span class="step-title">Close the Loop</span>
-                </div>
-                <p class="step-description">Close the loop by optimizing prompts through research-driven techniques or custom RL objectives. Your agent gets better with every iteration.</p>
-              </div>
-              </div>
-
-          </div>
-
           <!-- Simulation Environment Section -->
           <div class="step-item">
-            <div class="mobile-only" style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-              <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-              </div>
-              <strong style="font-size:20px;">Create infinite user environments. Give your agents a playground.</strong>
+            <div class="step-item-header">
+              <h3 class="dev-section-title">Create infinite user environments. Give your agents a playground.</h3>
             </div>
             <p style="color:var(--muted);margin-bottom:32px;">Select a user persona to see how Playgent simulates realistic testing scenarios.</p>
 
@@ -158,7 +218,7 @@ import Cubes from "../components/Cubes.tsx";
                     <div class="sandbox-section">
                       <div class="sandbox-section-label">Simulated User (LLM)</div>
                       <div class="sandbox-row">
-                        <img src="/user-placeholder.png" width="40" height="40" id="sandbox-user-icon" class="sandbox-icon" alt="User" />
+                        <img src="/sandra-icon.png" width="40" height="40" id="sandbox-user-icon" class="sandbox-icon" alt="User" />
                         <span class="user-name" id="user-name">Alex</span>
                 </div>
               </div>
@@ -311,7 +371,7 @@ import Cubes from "../components/Cubes.tsx";
           </div>
 
           <!-- FAQ Section -->
-          <div class="step-item" style="border-bottom:none;">
+          <div id="faq" class="step-item" style="border-bottom:none;">
             <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
               <div style="width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--accent);background:var(--accent-bg);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -412,11 +472,11 @@ import Cubes from "../components/Cubes.tsx";
             we'll help you build the testing infrastructure you need.
           </p>
           <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-            <a href="https://calendly.com/founders-pharmie/aniruddh-1-1" target="_blank" rel="noopener noreferrer" class="cta-button primary">
-              Let's Talk
+            <a href="/waitlist" class="cta-button primary">
+              Join Waitlist
             </a>
-            <a href="mailto:aniruddh@pharmie.app" class="cta-button secondary">
-              Email Us
+            <a href="https://calendly.com/founders-pharmie/aniruddh-1-1" target="_blank" rel="noopener noreferrer" class="cta-button secondary">
+              Let's Talk
             </a>
           </div>
         </div>
@@ -487,6 +547,31 @@ import Cubes from "../components/Cubes.tsx";
     opacity: 1;
   }
 
+  /* Hero CTA Button */
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: var(--btn-primary-text);
+    border: 2px solid var(--accent);
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Space Grotesk', monospace;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .hero-cta-btn:hover {
+    background: transparent;
+    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--ring);
+  }
+
   /* Extended borders for hero box */
   .hero-box::before,
   .hero-box::after {
@@ -537,6 +622,14 @@ import Cubes from "../components/Cubes.tsx";
   .step-item {
     padding: 64px;
     border-bottom: 1px solid var(--border);
+  }
+
+  .step-item-header {
+    margin-bottom: 32px;
+  }
+
+  .step-item-header .dev-section-title {
+    margin-bottom: 0;
   }
 
   /* Desktop Hero Messages */
@@ -1599,6 +1692,349 @@ import Cubes from "../components/Cubes.tsx";
     display: none;
   }
 
+  /* Developer Sections */
+  .dev-section {
+    padding: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dev-section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    min-height: 400px;
+  }
+
+  .dev-section-grid.reverse {
+    grid-template-columns: 1.4fr 1fr;
+  }
+
+  .dev-section-text {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .dev-section-grid.reverse .dev-section-text {
+    border-right: none;
+    border-left: 1px solid var(--border);
+  }
+
+  .dev-section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--fg);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .dev-section-desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .dev-section-header {
+    padding: 32px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dev-section-header .dev-section-title {
+    margin-bottom: 8px;
+  }
+
+  .dev-section-grid-full {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 380px;
+  }
+
+  /* Code Block */
+  .dev-code-block {
+    display: flex;
+    flex-direction: column;
+    background: #0d1117;
+    overflow: hidden;
+  }
+
+  html:not(.dark) .dev-code-block {
+    background: #f6f8fa;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #161b22;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  html:not(.dark) .code-header {
+    background: #e1e4e8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .code-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .code-dot.red { background: #ff5f57; }
+  .code-dot.yellow { background: #febc2e; }
+  .code-dot.green { background: #28c840; }
+
+  .code-filename {
+    margin-left: 12px;
+    font-size: 12px;
+    color: #8b949e;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  html:not(.dark) .code-filename {
+    color: #586069;
+  }
+
+  .code-content {
+    padding: 24px;
+    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .code-line {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: pre;
+  }
+
+  .code-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .code-line.highlight {
+    margin-left: -12px;
+    padding-left: 12px;
+    border-left: 3px solid #00e5ff;
+  }
+
+  html:not(.dark) .code-line.highlight {
+    border-left-color: #0969da;
+  }
+
+  .code-line.output-line {
+    margin-top: 4px;
+  }
+
+  /* Syntax highlighting - Dark mode (default) */
+  .code-var { color: #79c0ff; }
+  .code-op { color: #ff7b72; }
+  .code-module { color: #d2a8ff; }
+  .code-fn { color: #d2a8ff; }
+  .code-param { color: #ffa657; }
+  .code-string { color: #a5d6ff; }
+  .code-prop { color: #79c0ff; }
+  .code-keyword { color: #ff7b72; }
+  .code-output { color: #3fb950; font-weight: 600; }
+
+  /* Syntax highlighting - Light mode override */
+  html:not(.dark) .code-var { color: #0550ae; }
+  html:not(.dark) .code-op { color: #cf222e; }
+  html:not(.dark) .code-module { color: #8250df; }
+  html:not(.dark) .code-fn { color: #8250df; }
+  html:not(.dark) .code-param { color: #953800; }
+  html:not(.dark) .code-string { color: #0a3069; }
+  html:not(.dark) .code-prop { color: #0550ae; }
+  html:not(.dark) .code-keyword { color: #cf222e; }
+  html:not(.dark) .code-output { color: #1a7f37; font-weight: 600; }
+
+  /* Console Block */
+  .console-block {
+    display: flex;
+    flex-direction: column;
+    background: #0d1117;
+    border-left: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  html:not(.dark) .console-block {
+    background: #f6f8fa;
+  }
+
+  .console-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #161b22;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  html:not(.dark) .console-header {
+    background: #e1e4e8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .console-icon {
+    color: #3fb950;
+    font-size: 10px;
+  }
+
+  html:not(.dark) .console-icon {
+    color: #1a7f37;
+  }
+
+  .console-title {
+    font-size: 12px;
+    color: #8b949e;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  html:not(.dark) .console-title {
+    color: #586069;
+  }
+
+  .console-content {
+    padding: 24px;
+    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .console-line {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .console-line.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .console-line.system {
+    color: #8b949e;
+  }
+
+  html:not(.dark) .console-line.system {
+    color: #57606a;
+  }
+
+  .console-line.system .console-prefix {
+    color: #3fb950;
+  }
+
+  html:not(.dark) .console-line.system .console-prefix {
+    color: #1a7f37;
+  }
+
+  .console-line.user .console-label {
+    color: #58a6ff;
+    font-weight: 600;
+    min-width: 60px;
+  }
+
+  html:not(.dark) .console-line.user .console-label {
+    color: #0969da;
+  }
+
+  .console-line.user {
+    color: #c9d1d9;
+  }
+
+  html:not(.dark) .console-line.user {
+    color: #24292f;
+  }
+
+  .console-line.agent .console-label {
+    color: #d2a8ff;
+    font-weight: 600;
+    min-width: 60px;
+  }
+
+  html:not(.dark) .console-line.agent .console-label {
+    color: #8250df;
+  }
+
+  .console-line.agent {
+    color: #c9d1d9;
+  }
+
+  html:not(.dark) .console-line.agent {
+    color: #24292f;
+  }
+
+  .console-line.tool {
+    color: #ffa657;
+    padding-left: 68px;
+  }
+
+  html:not(.dark) .console-line.tool {
+    color: #953800;
+  }
+
+  .console-line.tool .console-prefix {
+    color: #ffa657;
+  }
+
+  html:not(.dark) .console-line.tool .console-prefix {
+    color: #953800;
+  }
+
+  .console-line.tool .console-url {
+    color: #3fb950;
+  }
+
+  html:not(.dark) .console-line.tool .console-url {
+    color: #1a7f37;
+  }
+
+  .console-line.file {
+    padding-left: 68px;
+    color: #8b949e;
+  }
+
+  html:not(.dark) .console-line.file {
+    color: #57606a;
+  }
+
+  .console-line.file .console-file {
+    color: #58a6ff;
+    text-decoration: underline;
+  }
+
+  html:not(.dark) .console-line.file .console-file {
+    color: #0969da;
+  }
+
+  .console-line.success {
+    color: #3fb950;
+  }
+
+  html:not(.dark) .console-line.success {
+    color: #1a7f37;
+  }
+
+  .console-prefix {
+    flex-shrink: 0;
+  }
+
+  .console-label {
+    flex-shrink: 0;
+  }
+
   @media (max-width: 768px) {
     /* Hide desktop-only elements on mobile */
     .desktop-only {
@@ -1611,6 +2047,55 @@ import Cubes from "../components/Cubes.tsx";
 
     #hero {
       padding-top: 80px !important;
+    }
+
+    /* Dev sections mobile */
+    .dev-section-grid,
+    .dev-section-grid.reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .dev-section-text {
+      padding: 32px 20px;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dev-section-grid.reverse .dev-section-text {
+      border-left: none;
+      order: -1;
+    }
+
+    .code-content,
+    .console-content {
+      padding: 16px;
+      font-size: 12px;
+    }
+
+    .console-line.tool,
+    .console-line.file {
+      padding-left: 0;
+    }
+
+    .console-block {
+      border-left: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .dev-section-header {
+      padding: 24px 20px;
+    }
+
+    .dev-section-grid-full {
+      grid-template-columns: 1fr;
+    }
+
+    .dev-section-title {
+      font-size: 24px;
+    }
+
+    .step-item-header {
+      margin-bottom: 24px;
     }
 
     .hero-box {
@@ -2508,5 +2993,63 @@ import Cubes from "../components/Cubes.tsx";
 
   // Re-initialize after navigation
   document.addEventListener('astro:after-swap', init);
+
+  // Animated Code Blocks and Console
+  let animationsPlayed = false;
+  
+  function initCodeAnimations() {
+    // Only run animations once per page load
+    if (animationsPlayed) return;
+    animationsPlayed = true;
+
+    const envCodeContent = document.getElementById('env-code-content');
+    const taskCodeContent = document.getElementById('task-code-content');
+    const consoleOutput = document.getElementById('console-output');
+
+    function animateLines(container: HTMLElement | null, baseDelay: number = 0) {
+      if (!container) return;
+      const lines = container.querySelectorAll('.code-line, .console-line');
+      
+      lines.forEach((line) => {
+        const delay = parseInt(line.getAttribute('data-delay') || '0') + baseDelay;
+        setTimeout(() => {
+          line.classList.add('visible');
+          
+          // Handle console line highlighting
+          if (line.classList.contains('console-line') && container.id === 'console-output') {
+            const highlightIds = line.getAttribute('data-highlight');
+            if (highlightIds) {
+              // Remove previous highlights
+              const taskLines = document.querySelectorAll('#task-code-content .code-line');
+              taskLines.forEach(tl => tl.classList.remove('highlight'));
+              
+              // Add new highlights
+              const ids = highlightIds.split(',');
+              ids.forEach(id => {
+                const targetLine = document.getElementById(id.trim());
+                if (targetLine) {
+                  targetLine.classList.add('highlight');
+                }
+              });
+            }
+          }
+        }, delay);
+      });
+    }
+
+    // Start animations immediately on page load
+    animateLines(envCodeContent);
+    animateLines(taskCodeContent);
+    animateLines(consoleOutput);
+  }
+
+  // Initialize code animations
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCodeAnimations);
+  } else {
+    initCodeAnimations();
+  }
+
+  document.addEventListener('astro:after-swap', initCodeAnimations);
 </script>
 

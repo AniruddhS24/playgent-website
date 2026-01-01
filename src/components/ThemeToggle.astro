@@ -45,26 +45,26 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
   
-  /* Light mode (default) - show moon icon (click to go dark) */
+  /* Dark mode (default) - show sun icon (click to go light) */
   .theme-toggle-btn #sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  
+  .theme-toggle-btn #moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.8);
+  }
+  
+  /* Light mode - show moon icon (click to go dark) */
+  :global(html:not(.dark)) .theme-toggle-btn #sun-icon {
     opacity: 0;
     transform: rotate(-90deg) scale(0.8);
   }
   
-  .theme-toggle-btn #moon-icon {
+  :global(html:not(.dark)) .theme-toggle-btn #moon-icon {
     opacity: 1;
     transform: rotate(0deg) scale(1);
-  }
-  
-  /* Dark mode - show sun icon (click to go light) */
-  :global(.dark) .theme-toggle-btn #sun-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-  
-  :global(.dark) .theme-toggle-btn #moon-icon {
-    opacity: 0;
-    transform: rotate(90deg) scale(0.8);
   }
 </style>
 
@@ -73,16 +73,13 @@
     const themeToggle = document.getElementById('theme-toggle');
     if (!themeToggle) return;
 
-    // Get saved theme or default to light
+    // Get saved theme or default to dark
     const getTheme = () => {
       if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
         return localStorage.getItem('theme');
       }
-      // Check system preference
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
+      // Default to dark mode
+      return 'dark';
     };
 
     // Apply theme

@@ -26,50 +26,10 @@ const { showDocs = false } = Astro.props;
     </button>
 
     <div class="nav-links">
-      <div class="dropdown">
-        <button class="dropdown-btn">
-          Solutions
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chevron">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="dropdown-menu enhanced">
-          <a href="/" class="dropdown-item">
-            <div class="item-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="3" y1="9" x2="21" y2="9"></line>
-                <line x1="9" y1="21" x2="9" y2="9"></line>
-              </svg>
-            </div>
-            <div class="item-content">
-              <div class="item-title">Vanguard</div>
-              <div class="item-description">Custom test harnesses for your AI agent use cases</div>
-            </div>
-          </a>
-          <a href="/detect" class="dropdown-item">
-            <div class="item-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                <line x1="12" y1="9" x2="12" y2="13"></line>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-            </div>
-            <div class="item-content">
-              <div class="item-title">Sentinel</div>
-              <div class="item-description">Drop-in SDK for observability and automatic issue detection</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      {showDocs && (
-        <a href={docsUrl} rel="noopener noreferrer" target="_blank" class="docs-link">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          Docs
-        </a>
-      )}
+      <a href="/#how">Product</a>
+      <a href="/#faq">FAQ</a>
       <ThemeToggle />
-      <a href="https://calendly.com/founders-pharmie/aniruddh-1-1" target="_blank" rel="noopener noreferrer" class="login-btn">Book Demo</a>
+      <a href="/waitlist" class="login-btn">Join Waitlist</a>
     </div>
   </div>
 </nav>
@@ -77,26 +37,23 @@ const { showDocs = false } = Astro.props;
 <style>
   .nav-pill {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 50;
-    width: calc(100% - 64px);
-    max-width: 1400px;
+    width: 100%;
     
-    /* Pill shape */
-    border-radius: 50px;
+    /* Sharp edges - no border radius */
+    border-radius: 0;
     
     /* Glass morphism effect */
     background: var(--nav-bg);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     
-    /* Subtle border */
-    border: 1px solid var(--border);
-    box-shadow: 
-      0 8px 32px 0 rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 0 var(--glass-border);
+    /* Border only on bottom */
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
   }
   
   .nav-pill a {
@@ -117,174 +74,21 @@ const { showDocs = false } = Astro.props;
     font-family: 'Space Grotesk', monospace;
   }
 
-  /* Dropdown Styles */
-  .dropdown {
-    position: relative;
-  }
-
-  .dropdown-btn {
-    background: none;
-    border: none;
-    color: var(--fg);
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-family: 'Space Grotesk', monospace;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s ease;
-    padding: 0;
-  }
-
-  .dropdown-btn:hover {
-    color: var(--accent);
-  }
-
-  .dropdown-btn .chevron {
-    transition: transform 0.2s ease;
-  }
-
-  .dropdown:hover .chevron {
-    transform: rotate(180deg);
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 16px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 8px;
-    min-width: 200px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
-    transform: translateX(-50%) translateY(-8px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    z-index: 100;
-  }
-
-  :root.dark .dropdown-menu {
-    background: #1a1a1a;
-  }
-
-  .dropdown-menu.enhanced {
-    min-width: 380px;
-    padding: 12px;
-  }
-
-  .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  .dropdown-menu a {
-    display: block;
-    padding: 12px 16px;
-    color: var(--fg);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: none;
-    letter-spacing: 0;
-    transition: all 0.2s ease;
-    border-radius: 8px;
-  }
-
-  .dropdown-menu a:hover {
-    background: var(--accent-bg);
-    color: var(--accent);
-  }
-
-  /* Enhanced Dropdown Items */
-  .dropdown-item {
-    display: flex;
-    align-items: start;
-    gap: 14px;
-    padding: 14px 16px !important;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-  }
-
-  .dropdown-item:hover {
-    background: var(--accent-bg);
-    transform: translateX(4px);
-  }
-
-  .item-icon {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    background: var(--accent-bg);
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-  }
-
-  .dropdown-item:hover .item-icon {
-    background: var(--accent);
-    transform: scale(1.05);
-  }
-
-  .dropdown-item:hover .item-icon svg {
-    stroke: var(--btn-primary-text);
-  }
-
-  .item-icon svg {
-    stroke: var(--accent);
-    transition: stroke 0.2s ease;
-  }
-
-  .item-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .item-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--fg);
-    font-family: 'Space Grotesk', monospace;
-    letter-spacing: 0.02em;
-  }
-
-  .item-description {
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--muted);
-    line-height: 1.5;
-    text-transform: none;
-    letter-spacing: 0;
-    font-family: inherit;
-  }
-
-  .dropdown-item:hover .item-title {
-    color: var(--accent);
-  }
-  
   .login-btn {
-    background: var(--login-btn-bg);
-    color: var(--login-btn-text) !important;
-    padding: 8px 24px;
-    border-radius: 50px;
+    background: var(--accent);
+    color: var(--btn-primary-text) !important;
+    padding: 10px 24px;
+    border-radius: 0;
+    border: 1px solid var(--accent);
     transition: all 0.2s ease;
+    font-weight: 700;
   }
   
   .login-btn:hover {
-    background: var(--accent) !important;
-    color: var(--btn-primary-text) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--ring);
+    background: transparent !important;
+    color: var(--accent) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px var(--ring);
   }
   
   /* Nav Container */
@@ -331,9 +135,8 @@ const { showDocs = false } = Astro.props;
 
   @media (max-width: 768px) {
     .nav-pill {
-      top: 12px;
-      width: calc(100% - 24px);
-      border-radius: 16px;
+      top: 0;
+      width: 100%;
     }
 
     .nav-container {
@@ -370,45 +173,6 @@ const { showDocs = false } = Astro.props;
       display: flex;
     }
 
-    .dropdown {
-      width: 100%;
-    }
-
-    .dropdown-btn {
-      width: 100%;
-      justify-content: space-between;
-      padding: 12px 0;
-    }
-
-    .dropdown-menu {
-      position: static;
-      transform: none;
-      opacity: 1;
-      visibility: visible;
-      box-shadow: none;
-      padding: 8px 0;
-      margin-top: 8px;
-      display: none;
-      background: transparent;
-      border: none;
-    }
-
-    .dropdown-menu.enhanced {
-      min-width: 100%;
-    }
-
-    .dropdown.open .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-item {
-      padding: 12px !important;
-      background: var(--box-bg);
-      border: 1px solid var(--border);
-      margin-bottom: 8px;
-      border-radius: 8px;
-    }
-
     .login-btn {
       text-align: center;
       padding: 12px 24px;
@@ -417,14 +181,13 @@ const { showDocs = false } = Astro.props;
 </style>
 
 <script>
-  // Mobile menu toggle
-  document.addEventListener('DOMContentLoaded', () => {
+  function initNavbar() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const menuIcon = document.querySelector('.menu-icon');
     const closeIcon = document.querySelector('.close-icon');
-    const dropdowns = document.querySelectorAll('.dropdown');
 
+    // Mobile menu toggle
     if (menuBtn && navLinks) {
       menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('open');
@@ -439,19 +202,16 @@ const { showDocs = false } = Astro.props;
         }
       });
     }
+  }
 
-    // Mobile dropdown toggle
-    dropdowns.forEach(dropdown => {
-      const btn = dropdown.querySelector('.dropdown-btn');
-      if (btn) {
-        btn.addEventListener('click', (e) => {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            dropdown.classList.toggle('open');
-          }
-        });
-      }
-    });
-  });
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavbar);
+  } else {
+    initNavbar();
+  }
+
+  // Re-initialize after navigation
+  document.addEventListener('astro:after-swap', initNavbar);
 </script>
 
