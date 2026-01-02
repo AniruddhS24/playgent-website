@@ -8,8 +8,8 @@ const { showDocs = false } = Astro.props;
 <nav class="nav-pill">
   <div class="nav-container">
     <a href="/" class="nav-logo">
-      <img src="/images/icon.png" alt="Playgent icon" width="36" height="36" />
-      <span>Playgent</span>
+      <img src="/images/logolight.svg" alt="Playgent logo" width="120" height="36" class="logo-light" />
+      <img src="/images/logodark.svg" alt="Playgent logo" width="120" height="36" class="logo-dark" />
     </a>
     
     <!-- Mobile Menu Button -->
@@ -111,6 +111,23 @@ const { showDocs = false } = Astro.props;
     letter-spacing: -0.02em;
   }
 
+  /* Theme-based logo switching */
+  .logo-light {
+    display: block;
+  }
+
+  .logo-dark {
+    display: none;
+  }
+
+  :global(.dark) .logo-light {
+    display: none;
+  }
+
+  :global(.dark) .logo-dark {
+    display: block;
+  }
+
   .nav-links {
     display: flex;
     gap: 40px;
@@ -150,7 +167,7 @@ const { showDocs = false } = Astro.props;
     }
 
     .nav-logo img {
-      width: 28px;
+      width: 90px;
       height: 28px;
     }
 

@@ -93,6 +93,12 @@
       if (theme) {
         localStorage.setItem('theme', theme);
       }
+      
+      // Update favicon based on theme
+      const favicon = document.getElementById('favicon') as HTMLLinkElement;
+      if (favicon) {
+        favicon.href = theme === 'dark' ? '/images/icondark.svg' : '/images/iconlight.svg';
+      }
     };
 
     // Initialize theme
